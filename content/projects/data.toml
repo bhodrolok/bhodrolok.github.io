@@ -1,0 +1,115 @@
+[[project]]
+
+name = "JobAppTrackr"
+
+desc = "Web app for tracking and managing job applications effectively"
+
+links = [
+
+        {name = "GitHub", url = "https://github.com/Bhodrolok/JobAppTrackr"},
+
+        {name = "GitHub", url = "https://github.com/Bhodrolok/JobAppTrackr"}
+
+]
+
+
+
+[[project]]
+
+name = "AdShare"
+
+desc = "Distributed Peer-to-Peer (P2P) advertisment platform"
+
+links = [
+
+        {name = "GitHub", url = "https://github.com/bgunson/as"},
+
+        {name = "GitHub", url = "https://github.com/bhodrolok/as"}
+
+]
+
+
+[[project]]
+
+name = "MERN E-Library"
+
+desc = "Web based simple library management system"
+
+links = [
+
+        {name = "Demo Website", url = "https://mern-library-nu.vercel.app/"},
+
+        {name = "GitHub", url = "http://github.com/bhodrolok/mernlibrary"}
+
+]
+
+[[project]]
+
+name = "PassCompare"
+
+desc = "Password policy comparison of popular websites using Dropbox's zxcvbn algorithm"
+
+links = [
+
+        {name = "GitHub", url = "https://github.com/Bhodrolok/PassCompare"},
+
+        {name = "zxcvbn", url = "https://github.com/dropbox/zxcvbn"}
+
+]
+
+[[project]]
+
+name = "TerrorDetect"
+
+desc = "Identifying potential criminals and terrorists from social media analysis."
+
+links = [
+
+        {name = "GitHub", url = "https://github.com/Bhodrolok/TerrorDetect"},
+
+        {name = "GitHub", url = "https://github.com/Bhodrolok/TerrorDetect"}
+
+]
+
+[[project]]
+
+name = "Community4All"
+
+desc = "Mobile friendly web app that acts as an online community posting board for services offered by residents"
+
+links = [
+
+        {name = "GitHub", url = "https://github.com/Bhodrolok/Community4All"},
+
+        {name = "GitHub", url = "https://github.com/DoughraT/Community"}
+
+]
+
+[[project]]
+
+name = "PyWeather"
+
+desc = "Check the weather details in a city through the command-line."
+
+links = [
+
+        {name = "GitHub", url = "https://github.com/Bhodrolok/pyweather"},
+
+        {name = "GitHub", url = "https://github.com/Bhodrolok/pyweather"}
+
+]
+
+
+[[project]]
+
+name = "Papera"
+
+desc = "Academic Paper Submission System"
+
+links = [
+
+        {name = "GitHub", url = "https://github.com/Bhodrolok/Papera"},
+
+        {name = "GitHub", url = "https://github.com/MustafaMM/SENG"}
+
+]
