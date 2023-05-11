@@ -6,8 +6,6 @@ desc = "Web app for tracking and managing job applications effectively"
 
 links = [
 
-        {name = "GitHub", url = "https://github.com/Bhodrolok/JobAppTrackr"},
-
         {name = "GitHub", url = "https://github.com/Bhodrolok/JobAppTrackr"}
 
 ]
@@ -19,6 +17,8 @@ links = [
 name = "AdShare"
 
 desc = "Distributed Peer-to-Peer (P2P) advertisment platform"
+
+# TODO: Add demo website link!
 
 links = [
 
@@ -65,8 +65,6 @@ desc = "Identifying potential criminals and terrorists from social media analysi
 
 links = [
 
-        {name = "GitHub", url = "https://github.com/Bhodrolok/TerrorDetect"},
-
         {name = "GitHub", url = "https://github.com/Bhodrolok/TerrorDetect"}
 
 ]
@@ -77,12 +75,10 @@ name = "Community4All"
 
 desc = "Mobile friendly web app that acts as an online community posting board for services offered by residents"
 
+# TODO: Add demo website link!
 links = [
 
-        {name = "GitHub", url = "https://github.com/Bhodrolok/Community4All"},
-
-        {name = "GitHub", url = "https://github.com/DoughraT/Community"}
-
+        {name = "GitHub", url = "https://github.com/Bhodrolok/Community4All"}
 ]
 
 [[project]]
@@ -92,8 +88,6 @@ name = "PyWeather"
 desc = "Check the weather details in a city through the command-line."
 
 links = [
-
-        {name = "GitHub", url = "https://github.com/Bhodrolok/pyweather"},
 
         {name = "GitHub", url = "https://github.com/Bhodrolok/pyweather"}
 
@@ -108,8 +102,6 @@ desc = "Academic Paper Submission System"
 
 links = [
 
-        {name = "GitHub", url = "https://github.com/Bhodrolok/Papera"},
-
-        {name = "GitHub", url = "https://github.com/MustafaMM/SENG"}
+        {name = "GitHub", url = "https://github.com/Bhodrolok/Papera"}
 
 ]
