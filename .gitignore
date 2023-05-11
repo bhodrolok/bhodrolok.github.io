@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 themes/serene
 config.dev.toml
+public/
