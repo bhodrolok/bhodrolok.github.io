@@ -8,8 +8,7 @@ Built using [Zola](https://www.getzola.org/) and [Serene theme](https://github.c
 
 **Building**: `zola --config /path/to/configfile.toml build`
 
-**Serving**: `zola --config /path/to/configfile.toml serve --interface 0.0.0.0 --po
-rt $PORT --base-url 127.0.0.1`
+**Serving**: `zola --config /path/to/configfile.toml serve --interface 0.0.0.0 --port $PORT --base-url 127.0.0.1`
 
 Detailed documentation for building a similar site of your own can be found [here](https://www.getzola.org/documentation/getting-started/overview/) and [here](https://github.com/isunjn/serene/wiki/English-Docs).
 
