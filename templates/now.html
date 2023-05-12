@@ -44,7 +44,9 @@
     </div>
     {%- endfor %}
     <hr>
-    <p>These are my priorities as of: <b> May 11, 2023 </b></p>
+    {% for current_date in now_data.timing -%}
+    <p>These are my priorities as of: <b> {{ current_date.date }} </b></p>
+    {%- endfor %}
     <p>Page inspired by <a href="https://sive.rs/" target="_blank">Derek Sivers</a> and the <a href="https://nownownow.com/about" target="_blank"> Now movement</a></p>
     <p>To see what other people are upto now, see <a href="https://nownownow.com" target="_blank">nownownow</a>. Consider sharing yours!</p>
 </main>
