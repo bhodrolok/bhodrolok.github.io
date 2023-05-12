@@ -5,30 +5,30 @@ const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
 const prefersLight = window.matchMedia("(prefers-color-scheme: light)");
 const prefersCoffee = window.matchMedia("(prefers-color-scheme: coffee");       // Not really an 'option' as system themes are either light or dark
 
-// Switch current theme to dark mode
+// Switch current theme to dark mode (from light)
 function toggleDarkTheme() {
-    toggleBtnIcon.classList.remove('ri-moon-line', 'ri-cup-fill');
-    toggleBtnIcon.classList.add('ri-sun-line');
+    toggleBtnIcon.classList.remove('ri-moon-clear-fill', 'ri-exchange-funds-fill');
+    toggleBtnIcon.classList.add('ri-cup-fill');
     document.body.classList.add('dark-mode');
     document.body.classList.remove('coffee-mode', 'light-mode');
     currentTheme = "dark";
     localStorage.setItem("theme", "dark");
 }
 
-// Switch current theme to light mode
+// Switch current theme to light mode (from coffee)
 function toggleLightTheme() {
-    toggleBtnIcon.classList.remove('ri-sun-line', 'ri-cup-fill');
-    toggleBtnIcon.classList.add('ri-moon-line');
+    toggleBtnIcon.classList.remove('ri-exchange-funds-fill', 'ri-cup-fill');
+    toggleBtnIcon.classList.add('ri-moon-clear-fill');
     document.body.classList.add('light-mode');
     document.body.classList.remove('dark-mode', 'coffee-mode');
     currentTheme = "light";
     localStorage.setItem("theme", "light");
 }
 
-// Switch current theme to coffee mode
+// Switch current theme to coffee mode (from dark)
 function toggleCoffeeTheme() {
-    toggleBtnIcon.classList.remove('ri-sun-line', 'ri-moon-line');
-    toggleBtnIcon.classList.add('ri-cup-fill');
+    toggleBtnIcon.classList.remove('ri-cup-fill', 'ri-moon-clear-fill');
+    toggleBtnIcon.classList.add('ri-exchange-funds-fill');
     document.body.classList.add('coffee-mode');
     document.body.classList.remove('dark-mode','light-mode');
     currentTheme = "coffee";
