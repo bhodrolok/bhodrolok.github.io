@@ -13,8 +13,6 @@ e ground up and automating anything (and everything!). Whether tinkering with ba
 loring bleeding edge front-end designs, I'm always eager to learn and stay up-to-date with the lates
 t technologies.
 
-Apart from all that, you'll find me exploring the wonderful City of Calgary, going hiking in the Roc
-kies and enjoying the great outdoors. I'm always a huge fan of football (BVB since 2011) and cricket
- (KKR since 2008)!
+Apart from all that, you'll find me exploring the wonderful City of Calgary, going hiking in the Rockies and enjoying the great outdoors. I'm also a huge fan of football (BVB since 2011) and cricket (KKR since 2008)!
 
 Thanks for stopping by!
