@@ -17,22 +17,23 @@ div.info {
         border-radius: 50%;
         margin-right: 30px;
     }
-    
+
     .info-text {
         #name {
-            font-size: 1.1em;
-            margin-right: 10px;
+            font-size: 1.3em;
+            margin-right: 13px;
         }
         #id {
             border: 2px var(--primary-color) solid;
             color: var(--primary-color);
             padding: 0px 16px 1px 16px;
             border-radius: 20px;
-            font-size: 0.75em;
+            font-size: 1em;
         }
         #bio {
             color: var(--text-second-color);
-            font-size: 0.8em;
+            font-size: 1em;
+            font-style: italic;
         }
     }
 }
@@ -83,7 +84,7 @@ div.link {
 }
 
 div.brief {
-    font-size: 1.4em;
+    font-size: 1.2em;
     line-height: 1.5;
     margin: 15px 0;
     p {
@@ -164,6 +165,24 @@ div.brief {
 body.dark-mode {
     div.info .info-text #bio {
         color: var(--dark-text-second-color);
+    }
+    div.link .left a,
+    div.link .right a,
+    div.link .right button {
+        color: var(--dark-text-primary-color);
+        &:visited {
+            color: var(--dark-text-primary-color);
+        }
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+}
+
+body.coffee-mode{
+
+    div.info .info-text #bio {
+        color: var(--dark-text-primary-color);
     }
     div.link .left a,
     div.link .right a,
