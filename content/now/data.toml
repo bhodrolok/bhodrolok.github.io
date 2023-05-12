@@ -1,0 +1,14 @@
+[[current_thing]]
+
+whatnow = [
+    { something = "Working on building JobAppTrackr - a place for job seekers to keep track of all their job applications!"} ,
+    { something = "Learning new concepts and tech stacks"} ,
+    { something = "Figuring out ways to improve projects I worked on in the past" },
+    { something = "Gitting gud at Bash and PowerShell" },
+    { something = "Trying to incorporate aspects of modern Agile and DevOps practices into day-to-day IRL stuff outside software development and project management" },
+    { something = "Praying that KKR wins the IPL this year!" }
+]
+
+[[timing]]
+
+date = "May 11, 2023"
