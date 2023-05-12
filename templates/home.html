@@ -1,7 +1,7 @@
 {% extends "_base.html" %}
 
 {% block lang -%}
-{% if section.extra.lang %}{{ section.extra.lang }} 
+{% if section.extra.lang %}{{ section.extra.lang }}
 {%- else %}{{ section.lang }}{% endif %}
 {%- endblock lang -%}
 
@@ -11,6 +11,7 @@
 
 {% block css -%}
 <link rel="stylesheet" href="/css/home.css" />
+<link rel="stylesheet" href="/css/footercss" />
 {%- endblock css %}
 
 {% block content %}
@@ -29,12 +30,20 @@
     </div>
     <div class="link">
         <div class="left">
-            <a href="/blog" id="blog">
+            {% if config.extra.show_blog -%}
+            <a href="/blog/" id="blog">
                 <i class="{{ config.extra.blog_icon }} ri-xl"></i>
                 <span>Blog</span>
             </a>
+            {% endif -%}
+            {% if config.extra.show_now -%}
+            <a href="/now/" id="now">
+                <i class="{{ config.extra.now_icon }} ri-xl"></i>
+                <span>Now</span>
+            </a>
+            {% endif -%}
             {% if config.extra.show_projects -%}
-            <a href="/projects" id="projects">
+            <a href="/projects/" id="projects">
                 <i class="{{ config.extra.projects_icon }} ri-xl"></i>
                 <span>Projects</span>
             </a>
@@ -42,11 +51,12 @@
         </div>
         <div class="right">
             {% for link in config.extra.links -%}
-            <a href="{{ link.url }}" aria-label="{{ link.name }}" target="_blank" rel='noreferrer noopener'><i class="{{ link.icon }} ri-xl"></i></a>
+            <a href="{{ link.url }}" aria-label="{{ link.name }}" target="_blank" rel='noreferrer noopener'><i class="{{ link.icon }} ri-2x"></i></a>
             {% endfor -%}
-            <button id="color-toggle"  aria-label="dark light mode switch"><i class="ri-moon-line ri-xl"></i></button>
+            <button id="color-toggle"  aria-label="dark light coffee mode switch"><i class="ri-exchange-funds-fill ri-2x"></i></button>
         </div>
     </div>
     <div class="brief">{{ section.content | trim | safe }}</div>
 </main>
+<!--{% include "_footer.html" -%}-->
 {% endblock content %}
