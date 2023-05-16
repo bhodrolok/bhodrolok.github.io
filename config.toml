@@ -2,7 +2,7 @@
 # Further reading: https://www.getzola.org/documentation/getting-started/configuration/
 
 # The URL the site will be built for
-base_url = "https://website.bhodrolok.xyz" 
+base_url = "https://bhodrolok.github.io" 
 
 # The site title, description and language; used in feeds by default.
 title = "Hello, World!"
@@ -71,6 +71,7 @@ toc_icon = "ri-menu-2-line"
 # Social media links 
 links = [
     {name = "GitHub", icon = "ri-github-line", url = "https://github.com/bhodrolok"},
+    {name = "LinkedIn", icon = "ri-linkedin-box-line", url = "https://www.linkedin.com/in/ranadipc/"},
     {name = "Email", icon = "ri-mail-send-line", url = "mailto:korbolorbo1214@proton.me"}
 ]
 
@@ -90,10 +91,10 @@ outdate_warn_text_before = "Note: This article was last updated "
 outdate_warn_text_after = " days ago and may be out of date."
 
 # Footer text
-footer_copyright_name = "<your-name>"
-footer_copyright_year = "2022"
+footer_copyright_name = ""
+footer_copyright_year = ""
 # footer_custom = "xxxxxxxx"
-footer_credits = true            # Whether to show "Powered by Zola and Serene" in footer
+footer_credits = false            # Whether to show "Powered by Zola and Serene" in footer
 
 # Comment and Web analytics config
 comment = "none"                 # gitalk / disqus / disqus_js
