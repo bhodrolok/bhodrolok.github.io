@@ -2,7 +2,7 @@
 # Further reading: https://www.getzola.org/documentation/getting-started/configuration/
 
 # The URL the site will be built for
-base_url = "https://bhodrolok.xyz" 
+base_url = "https://bhodrolok.github.io" 
 
 # The site title, description and language; used in feeds by default.
 title = "Hello, World!"
