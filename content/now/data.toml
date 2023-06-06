@@ -6,9 +6,8 @@ whatnow = [
     { something = "Figuring out ways to improve projects I worked on in the past" },
     { something = "Gitting gud at Bash and PowerShell" },
     { something = "Trying to incorporate aspects of modern Agile and DevOps practices into day-to-day IRL stuff outside software development and project management" },
-    { something = "Praying that KKR wins the IPL this year!" }
 ]
 
 [[timing]]
 
-date = "May 11, 2023"
+date = "June 5, 2023"
