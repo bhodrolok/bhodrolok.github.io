@@ -1,13 +1,14 @@
 [[current_thing]]
 
 whatnow = [
-    { something = "Working on building JobAppTrackr - a place for job seekers to keep track of all their job applications!"} ,
+    { something = "Working on building JobAppTrackr and rupantar"},
     { something = "Learning new concepts and tech stacks"} ,
     { something = "Figuring out ways to improve projects I worked on in the past" },
-    { something = "Gitting gud at Bash and PowerShell" },
+    { something = "Experimenting on my home server!"},
+    { something = "Practicing mindfulness and gratitude" },
     { something = "Trying to incorporate aspects of modern Agile and DevOps practices into day-to-day IRL stuff outside software development and project management" },
 ]
 
 [[timing]]
 
-date = "June 5, 2023"
+date = "June 23, 2023"

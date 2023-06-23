@@ -14,6 +14,20 @@ links = [
 
 [[project]]
 
+name = "rupantar"
+desc = "Simple hackable static site generator with a focus on minimalism"
+skills = [
+    {learnt = "Python"},
+    {learnt = "Jinja"},
+    {learnt = "Markdown"},
+    {learnt = "Unit Testing"}
+]
+links = [
+        {name = "GitHub", url = "https://github.com/Bhodrolok/rupantar"}
+]
+
+[[project]]
+
 name = "AdShare"
 desc = "Distributed Peer-to-Peer (P2P) advertisment platform"
 skills = [
