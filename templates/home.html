@@ -48,6 +48,12 @@
                 <span>Projects</span>
             </a>
             {% endif -%}
+            {% if config.extra.show_resume -%}
+            <a href="/assets/resume_rc.pdf" id="resume" target="_blank">
+                <i class="{{ config.extra.resume_icon }} ri-xl"></i>
+                <span>Resume</span>
+            </a>
+            {% endif -%}
         </div>
         <div class="right">
             {% for link in config.extra.links -%}
@@ -58,5 +64,5 @@
     </div>
     <div class="brief">{{ section.content | trim | safe }}</div>
 </main>
-<!--{% include "_footer.html" -%}-->
+{% include "_footer.html" -%}
 {% endblock content %}

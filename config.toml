@@ -58,6 +58,7 @@ show_id = true                   # Whether to show your id in homepage
 show_now = true
 show_blog = false
 show_projects = true             # Whether to show projects page
+show_resume = true
 
 # Icons, obtained from: https://remixicon.com/ 
 blog_icon = "ri-quill-pen-line"          
@@ -66,6 +67,7 @@ now_icon = "ri-meteor-line"
 home_icon = "ri-home-office-fill"
 rss_icon = "ri-rss-line"
 toc_icon = "ri-menu-2-line"
+resume_icon = "ri-booklet-line"
 
 
 # Social media links 
@@ -91,7 +93,7 @@ outdate_warn_text_before = "Note: This article was last updated "
 outdate_warn_text_after = " days ago and may be out of date."
 
 # Footer text
-footer_credits = false            
+footer_credits = true            
 footer_copyright_name = ""
 footer_copyright_year = ""
 # footer_custom = "xxxxxxxx"
