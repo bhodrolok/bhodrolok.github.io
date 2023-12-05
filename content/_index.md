@@ -4,7 +4,7 @@ template = 'home.html'
 lang = 'en'
 +++
 
-Hey there! I am a recent Computer Science graduate from the University of Calgary. I enjoy problem-solving, building things and collaborating with others in a shared setting and being a part of a community that shares this passion for coming up with innovative solutions for problems.
+I am a recent Computer Science graduate from the University of Calgary. I enjoy problem-solving, building things and collaborating with others in a shared setting and being a part of a community that shares this passion for coming up with innovative solutions for problems.
 
 As an aspiring Software Engineer and DevOps enthusiast, I love assembling things (both software and hardware!) from the ground up and automating things to make the workflow more efficient. Infact, I have developed multiple personal projects for making my day-to-day life just a little bit easier.
 

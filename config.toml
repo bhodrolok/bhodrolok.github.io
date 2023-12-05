@@ -10,7 +10,6 @@ description = "Landing page"
 default_language = "en"
 
 # theme = "" 
-
 # For overriding the default output directory `public` in the current working directory, set it to another value (e.g.: "docs")
 output_dir = "public"
 

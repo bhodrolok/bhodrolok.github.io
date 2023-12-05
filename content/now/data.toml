@@ -2,8 +2,8 @@
 
 whatnow = [
     { something = "Building JobAppTrackr and rupantar"},
-    { something = "Learning Golang"} ,
-    { something = "Finding ways to improve projects I have worked on in the past with my current knowledge(never settle!)" },
+    { something = "Learning C# and Golang"} ,
+    { something = "Finding ways to improve projects that I have worked on in the past with my current knowledge(never settle!)" },
     { something = "Self-hosting apps & services, and just overall experimenting, on my home server"},
     { something = "Practicing mindfulness and gratitude" },
     { something = "Reading The Count of Monte Cristo (finishing novel backlog!)" },
@@ -11,4 +11,4 @@ whatnow = [
 
 [[timing]]
 
-date = "November 3, 2023"
+date = "December 5, 2023"
