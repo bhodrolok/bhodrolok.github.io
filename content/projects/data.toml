@@ -1,22 +1,21 @@
 [[project]]
-
 name = "JobAppTrackr"
-desc = "Web app for tracking and managing job applications effectively"
+desc = "Web app for efficiently tracking and managing job applications"
+tags = ["ASP.NET", "C#", "React", "MongoDB"]
 skills = [
     {learnt = "ASP.NET Core"},
     {learnt = "C#"},
     {learnt = "React"},
     {learnt = "MongoDB"}
 ]
-
 links = [
         {name = "GitHub", url = "https://github.com/Bhodrolok/JobAppTrackr"}
 ]
 
 [[project]]
-
 name = "rupantar"
 desc = "Simple hackable static site generator with a focus on minimalism"
+tags = ["Python", "Jinja", "Markdown", "Unit Testing"]
 skills = [
     {learnt = "Python"},
     {learnt = "Jinja"},
@@ -31,6 +30,7 @@ links = [
 
 name = "AdShare"
 desc = "Distributed Peer-to-Peer (P2P) advertisment platform"
+tags = ["JavaScript", "React", "Docker", "Unit Testing"]
 skills = [
     {learnt = "JavaScript"},
     {learnt = "React"},
@@ -46,6 +46,7 @@ links = [
 [[project]]
 name = "MERN E-Library"
 desc = "Web based simple library management system"
+tags = ["MongoDB", "ExpressJS", "ReactJS", "NodeJS", "Docker"]
 skills = [
     {learnt = "MongoDB"},
     {learnt = "ExpressJS"},
@@ -54,13 +55,14 @@ skills = [
     {learnt = "Docker"}
 ]
 links = [
-        {name = "Demo Website", url = "https://mern-library-nu.vercel.app/"},
+        {name = "Demo", url = "https://mern-library-nu.vercel.app/"},
         {name = "GitHub", url = "http://github.com/bhodrolok/mernlibrary"}
 ]
 
 [[project]]
 name = "PassCompare"
 desc = "Password policy comparison of popular websites using Dropbox's zxcvbn algorithm"
+tags = ["Python", "NumPy", "Pandas", "Matplotlib"]
 skills = [
     {learnt = "Python"},
     {learnt = "NumPy"},
@@ -75,6 +77,7 @@ links = [
 [[project]]
 name = "TerrorDetect"
 desc = "Identifying potential criminals and terrorists from social media analysis."
+tags = ["Python","NLTK","ML Classification", "Twitter Sentiment Analysis"]
 skills = [
     {learnt = "Python"},
     {learnt = "NLTK"},
@@ -88,6 +91,7 @@ links = [
 [[project]]
 name = "Community4All"
 desc = "Mobile friendly web app that acts as an online community posting board for services offered by residents"
+tags = ["Python","Django","SQLite"]
 skills = [
     {learnt = "Python"},
     {learnt = "Django"},
@@ -102,6 +106,7 @@ links = [
 [[project]]
 name = "PyWeather"
 desc = "CLI application to check the weather details of a city."
+tags = ["Python","GeoPy","pyfiglet"]
 skills = [
     {learnt = "Python"},
     {learnt = "OpenWeatherMap Weather API"},
@@ -116,6 +121,7 @@ links = [
 [[project]]
 name = "Papera"
 desc = "Academic Paper Submission System"
+tags = ["JavaScript","PHP","MySQL"]
 skills = [
     {learnt = "JavaScript"},
     {learnt = "PHP"},
