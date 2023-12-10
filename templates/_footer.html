@@ -13,11 +13,12 @@
         {% endif %}
       </div>
     </div>
+    <!-- Attempt to show page build times, prob could be better...-->
     {% if config.extra.show_build_time %}
     <hr />
     <div class="bottom-section">
       {% set data = load_data(path="build_time.txt", format="text") %}
-      Generated in about {{ get_file_content(path="build_time.txt") }}s
+      Page generated in about {{ get_file_content(path="build_time.txt") }}s
     </div>
     {% endif %}
   </footer>

@@ -1,6 +1,6 @@
 {% extends "_base.html" %}
 
-{% block page %}now{% endblock page%}
+{% block page %}projects{% endblock page%}
 {% block lang %}{% if section.extra.lang %}{{ section.extra.lang }}{% else %}{{ section.lang }}{% endif %}{% endblock lang %}
 {% block title %}{{ section.title }}{% endblock title %}
 {% block desc %}
@@ -11,25 +11,15 @@
 {% include "_header.html" %}
 <div id="wrapper">
   <main>
-    {% set data = load_data(path="content/projects/data.toml", format="toml") %}
-    {% for proj in data.project %}
-    <div class="proj">
-      <p class="name">{{ proj.name }}</p>
-      <div class="desc">{{ proj.desc | trim | markdown | safe }}</div>
-      <div class="more">
-        <div class="tags">
-          {% for tag in proj.tags %}
-          <div><span>#</span>{{ tag }}</div>
-          {% endfor %}
-        </div>
-        <div class="links">
-          {% for link in proj.links -%}
-          <a href="{{ link.url }}" target="_blank" rel='noreferrer noopener'>{{ link.name }}</a>
-          {% endfor %}
-        </div>
-      </div>  
-    </div>
-    {% endfor %}
+    {% set now_data = load_data(path="content/now/data.toml", format="toml") %}
+    <hr>
+    {% for current_date in now_data.timing -%}
+    <p>These are my priorities as of: <b> {{ current_date.date }} </b></p>
+    {%- endfor %}
+    <p>Page inspired by <a href="https://sive.rs/" target="_blank">Derek Sivers</a> and the <a href="https://nownownow.com/about" target="_blank"> Now movement</a></p>
+    <p>To see what other people are upto now, see <a href="https://nownownow.com" target="_blank">nownownow</a>. Consider sharing yours!</p>
+
+
   </main>
   {% include "_footer.html" -%}
 </div>
