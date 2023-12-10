@@ -1,15 +1,24 @@
 <footer>
-    {% if config.extra.footer_credits -%}
-    <div class="copyright">
-        {% if config.extra.footer_custom -%}
-        {{ config.extra.footer_custom }}
-        {%- else -%}
-        Made with ❤️ 
-        {%- endif %}
+    <div class="top-section">
+      <div class="copyright">
+        {{ config.extra.footer_copyright | trim | markdown | safe }}
+      </div>
+      {% if config.extra.footer_credits %}
+      <div class="credits" >
+        Built with
+        <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola</a> {% if config.extra.zola_version %} {{ config.extra.zola_version }} {% endif %}
+        using the
+        <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene</a>
+        theme with tweaks.
+        {% endif %}
+      </div>
     </div>
-    
-    <div class="credits">
-        <span>Built with <a href="https://www.getzola.org/" target="_blank" rel='noreferrer noopener'>Zola</a> & <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>Serene</a></span>
+    <!-- Attempt to show page build times, prob could be better...-->
+    {% if config.extra.show_build_time %}
+    <hr />
+    <div class="bottom-section">
+      {% set data = load_data(path="build_time.txt", format="text") %}
+      Page generated in about {{ get_file_content(path="build_time.txt") }}s
     </div>
-    {%- endif %}
-</footer>
+    {% endif %}
+  </footer>

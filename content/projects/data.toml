@@ -1,43 +1,23 @@
 [[project]]
-
 name = "JobAppTrackr"
-desc = "Web app for tracking and managing job applications effectively"
-skills = [
-    {learnt = "ASP.NET Core"},
-    {learnt = "C#"},
-    {learnt = "React"},
-    {learnt = "MongoDB"}
-]
-
+desc = "Web app for efficiently tracking and managing job applications"
+tags = ["ASP.NET", "C#", "React", "MongoDB"]
 links = [
         {name = "GitHub", url = "https://github.com/Bhodrolok/JobAppTrackr"}
 ]
 
 [[project]]
-
 name = "rupantar"
 desc = "Simple hackable static site generator with a focus on minimalism"
-skills = [
-    {learnt = "Python"},
-    {learnt = "Jinja"},
-    {learnt = "Markdown"},
-    {learnt = "Unit Testing"}
-]
+tags = ["Python", "Jinja", "Markdown", "Unit Testing"]
 links = [
         {name = "GitHub", url = "https://github.com/Bhodrolok/rupantar"}
 ]
 
 [[project]]
-
 name = "AdShare"
 desc = "Distributed Peer-to-Peer (P2P) advertisment platform"
-skills = [
-    {learnt = "JavaScript"},
-    {learnt = "React"},
-    {learnt = "npm scripting"},
-    {learnt = "Unit Testing"},
-    {learnt = "Docker"}
-]
+tags = ["JavaScript", "React", "Docker", "Unit Testing"]
 links = [
         # TODO: Add demo website link
         {name = "GitHub", url = "https://github.com/bhodrolok/as"}
@@ -46,27 +26,16 @@ links = [
 [[project]]
 name = "MERN E-Library"
 desc = "Web based simple library management system"
-skills = [
-    {learnt = "MongoDB"},
-    {learnt = "ExpressJS"},
-    {learnt = "ReactJS"},
-    {learnt = "NodeJS"},
-    {learnt = "Docker"}
-]
+tags = ["MongoDB", "ExpressJS", "ReactJS", "NodeJS", "Docker"]
 links = [
-        {name = "Demo Website", url = "https://mern-library-nu.vercel.app/"},
+        {name = "Demo", url = "https://mern-library-nu.vercel.app/"},
         {name = "GitHub", url = "http://github.com/bhodrolok/mernlibrary"}
 ]
 
 [[project]]
 name = "PassCompare"
 desc = "Password policy comparison of popular websites using Dropbox's zxcvbn algorithm"
-skills = [
-    {learnt = "Python"},
-    {learnt = "NumPy"},
-    {learnt = "Pandas"},
-    {learnt = "Matplotlib"}
-]
+tags = ["Python", "NumPy", "Pandas", "Matplotlib"]
 links = [
         {name = "GitHub", url = "https://github.com/Bhodrolok/PassCompare"},
         {name = "zxcvbn", url = "https://github.com/dropbox/zxcvbn"}
@@ -75,12 +44,7 @@ links = [
 [[project]]
 name = "TerrorDetect"
 desc = "Identifying potential criminals and terrorists from social media analysis."
-skills = [
-    {learnt = "Python"},
-    {learnt = "NLTK"},
-    {learnt = "ML Classification"},
-    {learnt = "Twitter Sentiment Analysis"}
-]
+tags = ["Python","NLTK","ML Classification", "Twitter Sentiment Analysis"]
 links = [
         {name = "GitHub", url = "https://github.com/Bhodrolok/TerrorDetect"}
 ]
@@ -88,11 +52,7 @@ links = [
 [[project]]
 name = "Community4All"
 desc = "Mobile friendly web app that acts as an online community posting board for services offered by residents"
-skills = [
-    {learnt = "Python"},
-    {learnt = "Django"},
-    {learnt = "SQLite"}
-]
+tags = ["Python","Django","SQLite"]
 links = [
         # TODO: Add demo website link
         {name = "GitHub", url = "https://github.com/Bhodrolok/Community4All"},
@@ -102,25 +62,15 @@ links = [
 [[project]]
 name = "PyWeather"
 desc = "CLI application to check the weather details of a city."
-skills = [
-    {learnt = "Python"},
-    {learnt = "OpenWeatherMap Weather API"},
-    {learnt = "GeoPy"},
-    {learnt = "pyfiglet"}
-]
+tags = ["Python","GeoPy","pyfiglet", "OpenWeatherMap", "API"]
 links = [
         {name = "GitHub", url = "https://github.com/Bhodrolok/pyweather"}
 ]
 
-
 [[project]]
 name = "Papera"
 desc = "Academic Paper Submission System"
-skills = [
-    {learnt = "JavaScript"},
-    {learnt = "PHP"},
-    {learnt = "MySQL"}
-]
+tags = ["JavaScript","PHP","MySQL"]
 links = [
         {name = "GitHub", url = "https://github.com/Bhodrolok/Papera"}
 ]

@@ -1,57 +1,29 @@
 {% extends "_base.html" %}
 
-{% block head -%}
-{% block lang -%}
-{% if section.extra.lang %}{{ section.extra.lang }}
-{%- else %}{{ section.lang }}{% endif %}
-{%- endblock lang %}
-
+{% block page %}projects{% endblock page%}
+{% block lang %}{% if section.extra.lang %}{{ section.extra.lang }}{% else %}{{ section.lang }}{% endif %}{% endblock lang %}
 {% block title %}{{ section.title }}{% endblock title %}
-
-{% block desc %}{{ section.description }}{% endblock desc %}
-
-{% block css -%}
-<link rel="stylesheet" href="/css/header.css" />
-<link rel="stylesheet" href="/css/footer.css" />
-<link rel="stylesheet" href="/css/projects.css" />
-{%- endblock css %}
-
-{%- endblock head %}
+{% block desc %}
+  <meta name="description" content="{{ section.description }}">
+{% endblock desc %}
 
 {% block content %}
-<header {% if config.extra.blur_effect %} class="blur" {% endif %}>
-    <div class="top">
-        <a class="header projects" href="/now"><i class="{{ config.extra.now_icon }} ri-2x"></i><span>Now</span></a>
-        <a class="back" href="/"><i class="ri-arrow-left-s-line ri-1x"></i><span>Home</span></a>
-        <a class="now" href="/projects"><i class="ri-arrow-right-s-line ri-1x"></i><span>Projects</span></a>
-        <div class="icon">
-            <a id="go-home" href="/" aria-label="home"><i class="{{ config.extra.home_icon }} ri-xl"></i></a>
-            <button id="color-toggle" aria-label="dark light coffee mode switch"><i class="ri-exchange-funds-fill ri-xl"></i></button>
-        </div>
-    </div>
-    <div id="progress-bar"></div>
-</header>
-{% set now_data = load_data(path="content/now/data.toml", format="toml") -%}
-
-<main>
-    <div class="full">
-    <p>Some of the things that I am occupied with now are... </p>
-    {% for current_thing in now_data.current_thing -%}
-    <div class="current">
-        {% for what_am_i_doing_now in current_thing.whatnow -%}
-        <ul>
-            <li>{{ what_am_i_doing_now.something }}</li>
-        </ul>
-        {%- endfor %}
-    </div>
-    {%- endfor %}
-    <hr>
+{% include "_header.html" %}
+<div id="wrapper">
+  <main>
+    {% set now_data = load_data(path="content/now/data.toml", format="toml") %}
     {% for current_date in now_data.timing -%}
-    <p>These are my priorities as of: <b> {{ current_date.date }} </b></p>
+    <blockquote>As of <b> {{ current_date.date }} </b></blockquote>
+    <section id="brief" class="prose">
+      {{ section.content | trim | safe }}
+    </section>
+    <hr>
     {%- endfor %}
-    <p>Page inspired by <a href="https://sive.rs/" target="_blank">Derek Sivers</a> and the <a href="https://nownownow.com/about" target="_blank"> Now movement</a></p>
-    <p>To see what other people are upto now, see <a href="https://nownownow.com" target="_blank">nownownow</a>. Consider sharing yours!</p>
-    </div>
-</main>
-{% include "_footer.html" -%}
+    <p>This page is inspired by <a href="https://sive.rs/" target="_blank">Derek Sivers</a> and the <a href="https://nownownow.com/about" target="_blank"> Now movement</a></p>
+    <p>To see what other people are upto now, see <a href="https://nownownow.com" target="_blank">nownownow</a>. Consider adding one to your site if you have one!</p>
+
+
+  </main>
+  {% include "_footer.html" -%}
+</div>
 {% endblock content %}

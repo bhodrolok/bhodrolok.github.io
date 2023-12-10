@@ -398,5 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 themes/serene
-config.dev.toml
+config.*.toml
 public/
