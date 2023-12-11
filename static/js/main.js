@@ -212,7 +212,7 @@ function enableImgLightense() {
 }
 
 
-function getUserDay() {
+function getLocalDay() {
 
   var date = new Date();
   // toLocaleString(locales, options): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
@@ -226,6 +226,26 @@ function getUserDay() {
     // Do this iff an element with id 'greeting' exists in the page
     greeting.innerHTML = localday;
   };
+}
+
+function generateRandGreetingAdjective(){
+  // https://www.wordhippo.com/what-is/another-word-for/pleasant.html
+  
+  const synonyms = new Array(
+    "delightful", "lovely", "charming", "amazing", "blissful", "blessed", "splendid", "superb", "enjoyable", "great", "enchanting"
+  );
+  
+  // https://stackoverflow.com/a/73245060
+  const randadjective = synonyms[Math.floor(Math.random() * synonyms.length)];
+  // XD
+  const vowelregex = /[aeiou]/;
+  const a_or_an = vowelregex.test(randadjective[0]) ? 'an ' : 'a ';
+  
+  const greetingadj = document.getElementById('greeting-adj');
+  if (greetingadj) {
+    // kinda hacky with the span & all
+    greetingadj.innerHTML = a_or_an + randadjective + ' ';
+  }
 }
 
 //--------------------------------------------
@@ -243,4 +263,5 @@ if (document.querySelector('.prose')) {
   addFootnoteBacklink();
   enableImgLightense();
 }
-getUserDay();
+getLocalDay();
+generateRandGreetingAdjective();

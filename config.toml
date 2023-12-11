@@ -100,5 +100,5 @@ not_found_recover_text = "« Let's get you back on track »"
 
 # Stuff below a horizontal break in the regular footer
 show_foooter = true
-show_build_time = true
+show_build_time = false
 show_user_greeting = true
