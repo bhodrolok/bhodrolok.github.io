@@ -59,16 +59,18 @@
       <div id="right">
         {% for link in config.extra.links -%}
         <a href="{{ link.url }}" aria-label="{{ link.name }}" target="_blank" rel='noreferrer noopener'>
-          {% set icon_path = "static/icon/" ~ link.icon ~ ".svg" %}
+          {% set icon_path = "static/icons/" ~ link.icon ~ ".svg" %}
           {% set icon = load_data(path=icon_path) %}
           {{ icon | safe }}
         </a>
         {% endfor %}
 
-        {% set moon_icon = load_data(path="static/icon/moon.svg") %}
-        {% set sun_icon = load_data(path="static/icon/sun.svg") %}
-        {% set coffee_icon = load_data(path="static/icon/cup.svg") %}
-        <button id="theme-toggle" aria-label="theme switch" data-moon-icon="{{ moon_icon }}" data-sun-icon="{{ sun_icon }}" data-cup-icon="{{ coffee_icon }}" >
+        {% set moon_icon = load_data(path="static/icons/moon.svg") %}
+        {% set sun_icon = load_data(path="static/icons/sun.svg") %}
+        {% set coffee_icon = load_data(path="static/icons/cup.svg") %}
+        {% set robot_icon = load_data(path="static/icons/robot.svg") %}
+        {% set bike_icon = load_data(path="static/icons/bike.svg") %}
+        <button id="theme-toggle" aria-label="theme switch" data-moon-icon="{{ moon_icon }}" data-sun-icon="{{ sun_icon }}" data-cup-icon="{{ coffee_icon }}" data-robot-icon="{{ robot_icon }}" data-bike-icon="{{ bike_icon}}">
           {{ moon_icon | safe }}
         </button>
       </div>

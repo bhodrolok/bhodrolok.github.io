@@ -40,11 +40,11 @@
     <div>
       {% if section.extra.copy is defined %}{% set allow_copy = section.extra.copy %}{% else %}{% set allow_copy = config.extra.copy %}{% endif %}
       {% if allow_copy %}
-      {% set copy_icon = load_data(path="static/icon/copy.svg") %}
-      {% set check_icon = load_data(path="static/icon/check.svg") %}
+      {% set copy_icon = load_data(path="static/icons/copy.svg") %}
+      {% set check_icon = load_data(path="static/icons/check.svg") %}
       <div id="copy-cfg" style="display: none;" data-copy-icon="{{ copy_icon }}" data-check-icon="{{ check_icon }}"></div>
       {% endif %}
-      {% set backlink_icon = load_data(path="static/icon/backlink.svg") %}
+      {% set backlink_icon = load_data(path="static/icons/backlink.svg") %}
       <article class="prose" data-backlink-icon="{{ backlink_icon }}">
         {{ section.content | safe }}
       </article>

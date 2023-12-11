@@ -5,24 +5,33 @@ function enableThemeToggle() {
   const preferLight = window.matchMedia( "(prefers-color-scheme: light)" );
   
   function toggleTheme(theme) {
+    // ...<-- Dark --> Cyberpunk --> Coffee --> Cyberspace --> Light -->...
     switch (theme){
       case "dark":
         document.body.classList.add('dark'); 
-        document.body.classList.remove('coffee');
-        document.body.classList.remove('light');
-        themeToggle.innerHTML = themeToggle.dataset.cupIcon; 
+        document.body.classList.remove('coffee', 'light', 'cyberpunk', 'cyberspace');
+        themeToggle.innerHTML = themeToggle.dataset.robotIcon; 
+        break;
+      case "cyberpunk":
+        document.body.classList.add('cyberpunk');
+        document.body.classList.remove('dark', 'light', 'coffee', 'cyberspace');
+        themeToggle.innerHTML = themeToggle.dataset.cupIcon;
+        break;
+      case "cyberspace":
+        document.body.classList.add('cyberspace');
+        document.body.classList.remove('dark', 'light', 'coffee', 'cyberpunk');
+        themeToggle.innerHTML = themeToggle.dataset.sunIcon;
         break;
       case "coffee":
         document.body.classList.add('coffee');
-        document.body.classList.remove('dark');
-        document.body.classList.remove('light');
-        themeToggle.innerHTML = themeToggle.dataset.sunIcon;
+        document.body.classList.remove('dark', 'light', 'cyberpunk', 'cyberspace');
+        themeToggle.innerHTML = themeToggle.dataset.bikeIcon;
         break;
       case "light":
         document.body.classList.add('light');
-        document.body.classList.remove('dark');
-        document.body.classList.remove('coffee');
+        document.body.classList.remove('dark', 'coffee', 'cyberpunk', 'cyberspace');
         themeToggle.innerHTML = themeToggle.dataset.moonIcon;
+        break;
     };
 
     if (hlLink) hlLink.href = `/hl-${theme}.css`;
@@ -43,21 +52,31 @@ function enableThemeToggle() {
   
   window.addEventListener('message', initGiscusTheme);
   
-  // Order should be: Dark --> Coffee --> Light --> Dark...
+  // Order should be: ...<-- Dark --> Cyberpunk --> Coffee --> Cyberspace --> Light -->...
   themeToggle.addEventListener('click', e =>  {
     var currentTheme = localStorage.getItem("theme");
     e.preventDefault();
-    if (currentTheme == "light") {
-      toggleTheme("dark");
-    } else if (currentTheme == "dark"){
-      toggleTheme("coffee");
-    } else {
-      toggleTheme("light");
+    switch (currentTheme) {
+      case "light":
+        toggleTheme("dark");
+        break;
+      case "dark":
+        toggleTheme("cyberpunk");
+        break;
+      case "cyberpunk":
+        toggleTheme("coffee");
+        break;
+      case "coffee":
+        toggleTheme("cyberspace");
+        break;
+      case "cyberspace":
+        toggleTheme("light");
+        break;
     }
   });
   
   preferDark.addEventListener("change", e => { 
-    toggleTheme(e.matches ? "dark" : "coffee") 
+    toggleTheme(e.matches ? "dark" : "cyberpunk") 
   });
 
   // User loading site for first time, enable their preferred color theme (light or dark)
@@ -76,14 +95,19 @@ function enableThemeToggle() {
     case "dark":
       toggleTheme("dark");
       break;
+    case "cyberpunk":
+      toggleTheme("cyberpunk");
+      break;
     case "coffee":
       toggleTheme("coffee");
+      break;
+    case "cyberspace":
+      toggleTheme("cyberspace");
       break;
     case "light":
       toggleTheme("light");
       break;
   }
-
 }
 
 function enableNavFold() {
@@ -211,7 +235,7 @@ function enableImgLightense() {
   window.addEventListener("load", () => Lightense(".prose img", { background: 'rgba(43, 43, 43, 0.19)' }));
 }
 
-
+// For greeting message in footer
 function getLocalDay() {
 
   var date = new Date();
@@ -228,6 +252,7 @@ function getLocalDay() {
   };
 }
 
+// For above function
 function generateRandGreetingAdjective(){
   // https://www.wordhippo.com/what-is/another-word-for/pleasant.html
   
@@ -247,6 +272,8 @@ function generateRandGreetingAdjective(){
     greetingadj.innerHTML = a_or_an + randadjective + ' ';
   }
 }
+
+// lowkey better to merge the two funcs into one and update the ID at one go, no?
 
 //--------------------------------------------
 

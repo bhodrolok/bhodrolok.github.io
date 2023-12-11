@@ -38,7 +38,7 @@
       {% endif %}
 
       {% if blog_section_path is defined and section.path is starting_with(blog_section_path) %}
-      {% set rss_icon = load_data(path="static/icon/rss.svg") %}
+      {% set rss_icon = load_data(path="static/icons/rss.svg") %}
       {% if section.generate_feed -%}
       <a href="{{ blog_section_path }}/{{ config.feed_filename }}" aria-label="rss feed">{{ rss_icon | safe }}</a>
       {% elif config.generate_feed -%}
@@ -46,15 +46,18 @@
       {% endif %}
       {% endif %}
 
-      {% set moon_icon = load_data(path="static/icon/moon.svg") %}
-      {% set sun_icon = load_data(path="static/icon/sun.svg") %}
-      {% set cup_icon = load_data(path="static/icon/cup.svg") %}
-      <button id="theme-toggle" aria-label="theme switch" data-moon-icon="{{ moon_icon }}" data-sun-icon="{{ sun_icon }}" data-cup-icon="{{ cup_icon }}">
+      {% set moon_icon = load_data(path="static/icons/moon.svg") %}
+      {% set sun_icon = load_data(path="static/icons/sun.svg") %}
+      {% set cup_icon = load_data(path="static/icons/cup.svg") %}
+      {% set robot_icon = load_data(path="static/icons/robot.svg") %}
+      {% set bike_icon = load_data(path="static/icons/bike.svg") %}
+      <button id="theme-toggle" 
+      aria-label="theme switch" data-moon-icon="{{ moon_icon }}" data-sun-icon="{{ sun_icon }}" data-cup-icon="{{ cup_icon }}" data-robot-icon="{{ robot_icon }}" data-bike-icon="{{ bike_icon}}">
         {{ moon_icon | safe }}
       </button>
 
       {% if blog_section_path is defined and section.path is starting_with(blog_section_path) %}
-      {% set toc_icon = load_data(path="static/icon/toc.svg") %}
+      {% set toc_icon = load_data(path="static/icons/toc.svg") %}
       {% if page.extra.toc is defined %}{% set show_toc = page.extra.toc %}{% else %}{% set show_toc = config.extra.toc %}{% endif %}
       {% if show_toc and page %}
       <button id="toc-toggle" aria-label="table of content">

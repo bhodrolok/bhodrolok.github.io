@@ -18,13 +18,16 @@ feed_filename = "feed.xml"             # The file name of feed, "feed.xml" / "at
 taxonomies = [{ name = "tags" }, { name = "categories" }]
 
 [markdown]
+# Highlighting = hl = for blog posts
 highlight_code = true
 highlight_theme = "css"
 extra_syntaxes_and_themes = ["highlight_themes"]
 highlight_themes_css = [
-    { theme = "serene-light", filename = "hl-light.css"},
-    { theme = "serene-dark", filename = "hl-dark.css"},
-    { theme = "serene-coffee", filename = "hl-coffee.css" },
+    { theme = "codehl-light", filename = "hl-light.css"},
+    { theme = "codehl-dark", filename = "hl-dark.css"},
+    { theme = "codehl-coffee", filename = "hl-coffee.css" },
+    { theme = "codehl-cyberpunk", filename = "hl-cyberpunk.css"},
+    { theme = "codehl-cyberspace", filename = "hl-cyberspace.css" }
 ]
 render_emoji = false            # Not used in serene it seems
 # target="_blank" rel="nofollow noreferrer" setting
