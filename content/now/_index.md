@@ -7,9 +7,9 @@ template = "now.html"
 lang = 'en'
 +++
 
-Some of the things that I am occupied with now are:
+Some of the things that I am occupied with **now** are:
 
-- Working on JobAppTrackr, rupantar and this website
+- Working on [JobAppTrackr](https://github.com/Bhodrolok/JobAppTrackr), [rupantar](https://github.com/Bhodrolok/rupantar) and this [website](https://github.com/Bhodrolok/Bhodrolok.github.io)
 - Learning C# and Golang
 - Finding ways to improve my previous projects with my current knowledge 
 - Trying to self-host some apps & services on my home server without breaking it

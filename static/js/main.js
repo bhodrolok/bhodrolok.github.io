@@ -83,7 +83,7 @@ function enableThemeToggle() {
       toggleTheme("light");
       break;
   }
-  
+
 }
 
 function enableNavFold() {
@@ -211,6 +211,23 @@ function enableImgLightense() {
   window.addEventListener("load", () => Lightense(".prose img", { background: 'rgba(43, 43, 43, 0.19)' }));
 }
 
+
+function getUserDay() {
+
+  var date = new Date();
+  // toLocaleString(locales, options): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+  // locales string obtained by navigator.language to get the (user) preferred language eg: 'en-US', 'de-DE'
+  const options = {
+    weekday: 'long'
+  };
+  var localday = date.toLocaleDateString(navigator.language, options);
+  const greeting = document.getElementById("greeting"); 
+  if (greeting) {
+    // Do this iff an element with id 'greeting' exists in the page
+    greeting.innerHTML = localday;
+  };
+}
+
 //--------------------------------------------
 
 enableThemeToggle();
@@ -226,3 +243,4 @@ if (document.querySelector('.prose')) {
   addFootnoteBacklink();
   enableImgLightense();
 }
+getUserDay();

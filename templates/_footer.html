@@ -13,12 +13,20 @@
         {% endif %}
       </div>
     </div>
-    <!-- Attempt to show page build times, prob could be better...-->
-    {% if config.extra.show_build_time %}
+
+    {% if config.extra.show_foooter %}
     <hr />
     <div class="bottom-section">
-      {% set data = load_data(path="build_time.txt", format="text") %}
-      Page generated in about {{ get_file_content(path="build_time.txt") }}s
+      {% if config.extra.show_build_time %}
+      <div class="gen-time">
+        Hello there just some text here ahahah
+        {% endif %}
+      </div>
+      {% if config.extra.show_user_greeting %}
+      <div class="greeting">
+        <p>Hope you are having a great <b id="greeting"></b>!</p>
+        {% endif %}
+      </div>
     </div>
     {% endif %}
-  </footer>
+</footer>

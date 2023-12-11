@@ -697,7 +697,7 @@ header {
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 footer {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   padding: 14px;
   display: flex;
   flex-direction: column;
@@ -707,11 +707,11 @@ footer {
   gap: 3px;
   color: var(--text-pale-color);
 
-  .copyright {
+  .copyright, .gen-time {
     margin-right: auto;
   }
   
-  .credits {
+  .credits, .greeting {
     margin-left: auto;
   }
 
@@ -736,6 +736,11 @@ footer {
   // Part below the <hr />
   .bottom-section {
     text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   a {
@@ -748,7 +753,9 @@ footer {
       gap: 0;
 
       .copyright,
-      .credits {
+      .credits,
+      .greeting,
+      .gen-time {
         margin: 0;
       }
     }
