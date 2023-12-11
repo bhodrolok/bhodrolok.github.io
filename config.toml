@@ -47,7 +47,8 @@ bio = "Always Learning, Always Seeking"                          # Your bio
 avatar = "img/avatar.webp"            # Your avatar
 links = [                             # Your links
     { name = "GitHub", icon = "github", url = "https://github.com/bhodrolok" },
-    { name = "Email", icon = "email", url = "mailto:korbolorbo1214@proton.me" },
+    { name = "Telegram", icon = "telegram", url = "https://t.me/bhodro_lok" },
+    { name = "Email", icon = "email-alt", url = "mailto:korbolorbo1214@proton.me" },
     { name = "LinkedIn", icon = "linkedin", url = "https://linkedin.com/in/ranadipc" },
 ]
 
