@@ -26,7 +26,8 @@ highlight_themes_css = [
     { theme = "serene-dark", filename = "hl-dark.css"},
     { theme = "serene-coffee", filename = "hl-coffee.css" },
 ]
-render_emoji = false
+render_emoji = false            # Not used in serene it seems
+# target="_blank" rel="nofollow noreferrer" setting
 external_links_target_blank = true
 external_links_no_follow = true
 external_links_no_referrer = true
@@ -41,16 +42,17 @@ anchors = "on"
 
 [extra]
 
-name = "Ranadip Chatterjee"                         # Your name
-id = "R C"                           # Your id / username / handle
-bio = "Always Learning, Always Seeking"                          # Your bio
-avatar = "img/avatar.webp"            # Your avatar
-links = [                             # Your links
+# Homepage stuff
+name = "Ranadip Chatterjee"                         
+id = "R C"                           
+bio = "Always Learning, Always Seeking"
+avatar = "img/avatar.webp"            
+links = [                             
     { name = "GitHub", icon = "github", url = "https://github.com/bhodrolok" },
-    { name = "Email", icon = "email", url = "mailto:korbolorbo1214@proton.me" },
+    { name = "Telegram", icon = "telegram", url = "https://t.me/bhodro_lok" },
+    { name = "Email", icon = "email-alt", url = "mailto:korbolorbo1214@proton.me" },
     { name = "LinkedIn", icon = "linkedin", url = "https://linkedin.com/in/ranadipc" },
 ]
-
 show_resume = true
 
 homepage_layout = "about"             # "about" | "list"
@@ -96,4 +98,7 @@ not_found_title = "404"
 not_found_error_text = "Uh-oh! Looks like this page is out for lunch."
 not_found_recover_text = "« Let's get you back on track »"
 
+# Stuff below a horizontal break in the regular footer
+show_foooter = true
 show_build_time = false
+show_user_greeting = true

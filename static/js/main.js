@@ -5,26 +5,26 @@ function enableThemeToggle() {
   const preferLight = window.matchMedia( "(prefers-color-scheme: light)" );
   
   function toggleTheme(theme) {
-    if (theme == "dark"){
-      document.body.classList.add('dark'); 
-      document.body.classList.remove('coffee');
-      document.body.classList.remove('light');
-      themeToggle.innerHTML = themeToggle.dataset.cupIcon; 
-    }
-    else if (theme == "coffee") {
-      document.body.classList.add('coffee');
-      document.body.classList.remove('dark');
-      document.body.classList.remove('light');
-      themeToggle.innerHTML = themeToggle.dataset.sunIcon;
-    }
-    else {
-      // theme == 'light'
-      document.body.classList.add('light');
-      document.body.classList.remove('dark');
-      document.body.classList.remove('coffee');
-      themeToggle.innerHTML = themeToggle.dataset.moonIcon;
-    }
-    
+    switch (theme){
+      case "dark":
+        document.body.classList.add('dark'); 
+        document.body.classList.remove('coffee');
+        document.body.classList.remove('light');
+        themeToggle.innerHTML = themeToggle.dataset.cupIcon; 
+        break;
+      case "coffee":
+        document.body.classList.add('coffee');
+        document.body.classList.remove('dark');
+        document.body.classList.remove('light');
+        themeToggle.innerHTML = themeToggle.dataset.sunIcon;
+        break;
+      case "light":
+        document.body.classList.add('light');
+        document.body.classList.remove('dark');
+        document.body.classList.remove('coffee');
+        themeToggle.innerHTML = themeToggle.dataset.moonIcon;
+    };
+
     if (hlLink) hlLink.href = `/hl-${theme}.css`;
     
     localStorage.setItem("theme", theme);
@@ -59,24 +59,31 @@ function enableThemeToggle() {
   preferDark.addEventListener("change", e => { 
     toggleTheme(e.matches ? "dark" : "coffee") 
   });
+
+  // User loading site for first time, enable their preferred color theme (light or dark)
   if (!localStorage.getItem("theme")) {
     if (preferDark.matches) { 
       toggleTheme("dark");
     } else if (preferLight.matches) {
       toggleTheme("light");
     } else {
+      // Not sure if this even runs, surely its always either light or dark, no?
       toggleTheme("coffee");
     }
   }
-  if (localStorage.getItem("theme") == "dark"){
-    toggleTheme("dark");
+
+  switch (localStorage.getItem("theme")){
+    case "dark":
+      toggleTheme("dark");
+      break;
+    case "coffee":
+      toggleTheme("coffee");
+      break;
+    case "light":
+      toggleTheme("light");
+      break;
   }
-  if (localStorage.getItem("theme") == "coffee") {
-    toggleTheme("coffee");
-  }
-  if (localStorage.getItem("theme") == "light") { 
-    toggleTheme("light");
-  }
+
 }
 
 function enableNavFold() {
@@ -204,6 +211,43 @@ function enableImgLightense() {
   window.addEventListener("load", () => Lightense(".prose img", { background: 'rgba(43, 43, 43, 0.19)' }));
 }
 
+
+function getLocalDay() {
+
+  var date = new Date();
+  // toLocaleString(locales, options): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+  // locales string obtained by navigator.language to get the (user) preferred language eg: 'en-US', 'de-DE'
+  const options = {
+    weekday: 'long'
+  };
+  var localday = date.toLocaleDateString(navigator.language, options);
+  const greeting = document.getElementById("greeting"); 
+  if (greeting) {
+    // Do this iff an element with id 'greeting' exists in the page
+    greeting.innerHTML = localday;
+  };
+}
+
+function generateRandGreetingAdjective(){
+  // https://www.wordhippo.com/what-is/another-word-for/pleasant.html
+  
+  const synonyms = new Array(
+    "delightful", "lovely", "charming", "amazing", "blissful", "blessed", "splendid", "superb", "enjoyable", "great", "enchanting"
+  );
+  
+  // https://stackoverflow.com/a/73245060
+  const randadjective = synonyms[Math.floor(Math.random() * synonyms.length)];
+  // XD
+  const vowelregex = /[aeiou]/;
+  const a_or_an = vowelregex.test(randadjective[0]) ? 'an ' : 'a ';
+  
+  const greetingadj = document.getElementById('greeting-adj');
+  if (greetingadj) {
+    // kinda hacky with the span & all
+    greetingadj.innerHTML = a_or_an + randadjective + ' ';
+  }
+}
+
 //--------------------------------------------
 
 enableThemeToggle();
@@ -219,3 +263,5 @@ if (document.querySelector('.prose')) {
   addFootnoteBacklink();
   enableImgLightense();
 }
+getLocalDay();
+generateRandGreetingAdjective();
