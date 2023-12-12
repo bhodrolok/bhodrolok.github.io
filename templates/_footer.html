@@ -6,10 +6,10 @@
       {% if config.extra.footer_credits %}
       <div class="credits" >
         Built with
-        <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola</a> {% if config.extra.zola_version %} {{ config.extra.zola_version }} {% endif %}
-        using the
-        <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene</a>
-        theme with tweaks.
+        <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola {% if config.extra.zola_version %} ({{ config.extra.zola_version }}) {% endif %} </a>
+        & 
+        <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene v2.1.2</a>
+        with tweaks.
         {% endif %}
       </div>
     </div>
@@ -24,7 +24,7 @@
       </div>
       {% if config.extra.show_user_greeting %}
       <div class="greeting">
-        Hope you are having <span id="greeting-adj"></span><b id="greeting"></b>!
+        Hope you are having <span id="greeting"></span>!
         {% endif %}
       </div>
     </div>
