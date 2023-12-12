@@ -4,7 +4,7 @@
 
 ---
 
-Built using [Zola](https://www.getzola.org/) with the [Serene](https://github.com/isunjn/serene).
+Created using the Rust-based [Zola](https://www.getzola.org/) with the [Serene](https://github.com/isunjn/serene) theme applied.
 
 **Building**: `zola --config /your/custom/config.toml build`
 
