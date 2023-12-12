@@ -71,7 +71,7 @@
     {% endif %}
     {% if config.extra.back_to_top %}
     <button id="back-to-top" aria-label="back to top">
-      {% set icon = load_data(path="static/icon/arrow-up.svg") %}
+      {% set icon = load_data(path="static/icons/arrow-up.svg") %}
       {{ icon | safe }}
     </button>
     {% endif %}
@@ -80,11 +80,11 @@
     <div>
       {% if page.extra.copy is defined %}{% set allow_copy = page.extra.copy %}{% else %}{% set allow_copy = config.extra.copy %}{% endif %}
       {% if allow_copy %}
-      {% set copy_icon = load_data(path="static/icon/copy.svg") %}
-      {% set check_icon = load_data(path="static/icon/check.svg") %}
+      {% set copy_icon = load_data(path="static/icons/copy.svg") %}
+      {% set check_icon = load_data(path="static/icons/check.svg") %}
       <div id="copy-cfg" style="display: none;" data-copy-icon="{{ copy_icon }}" data-check-icon="{{ check_icon }}"></div>
       {% endif %}
-      {% set backlink_icon = load_data(path="static/icon/backlink.svg") %}
+      {% set backlink_icon = load_data(path="static/icons/backlink.svg") %}
       <article class="prose" data-backlink-icon="{{ backlink_icon }}">
         <h1>{{ page.title }}</h1>
         <div id="post-info">
@@ -114,7 +114,7 @@
         <blockquote id="outdate_alert" class="callout alert hidden" data-days="{{ outdate_alert_days }}"
           data-alert-text-before="{{ config.extra.outdate_alert_text_before }}"
           data-alert-text-after="{{ config.extra.outdate_alert_text_after }}">
-          {% set icon = load_data(path="static/icon/alert.svg") %}
+          {% set icon = load_data(path="static/icons/alert.svg") %}
           <div class="icon">
             {{ icon | safe }}
           </div>

@@ -5,24 +5,33 @@ function enableThemeToggle() {
   const preferLight = window.matchMedia( "(prefers-color-scheme: light)" );
   
   function toggleTheme(theme) {
+    // ...<-- Dark --> Cyberpunk --> Coffee --> Cyberspace --> Light -->...
     switch (theme){
       case "dark":
         document.body.classList.add('dark'); 
-        document.body.classList.remove('coffee');
-        document.body.classList.remove('light');
-        themeToggle.innerHTML = themeToggle.dataset.cupIcon; 
+        document.body.classList.remove('coffee', 'light', 'cyberpunk', 'cyberspace');
+        themeToggle.innerHTML = themeToggle.dataset.robotIcon; 
+        break;
+      case "cyberpunk":
+        document.body.classList.add('cyberpunk');
+        document.body.classList.remove('dark', 'light', 'coffee', 'cyberspace');
+        themeToggle.innerHTML = themeToggle.dataset.cupIcon;
+        break;
+      case "cyberspace":
+        document.body.classList.add('cyberspace');
+        document.body.classList.remove('dark', 'light', 'coffee', 'cyberpunk');
+        themeToggle.innerHTML = themeToggle.dataset.sunIcon;
         break;
       case "coffee":
         document.body.classList.add('coffee');
-        document.body.classList.remove('dark');
-        document.body.classList.remove('light');
-        themeToggle.innerHTML = themeToggle.dataset.sunIcon;
+        document.body.classList.remove('dark', 'light', 'cyberpunk', 'cyberspace');
+        themeToggle.innerHTML = themeToggle.dataset.bikeIcon;
         break;
       case "light":
         document.body.classList.add('light');
-        document.body.classList.remove('dark');
-        document.body.classList.remove('coffee');
+        document.body.classList.remove('dark', 'coffee', 'cyberpunk', 'cyberspace');
         themeToggle.innerHTML = themeToggle.dataset.moonIcon;
+        break;
     };
 
     if (hlLink) hlLink.href = `/hl-${theme}.css`;
@@ -43,21 +52,31 @@ function enableThemeToggle() {
   
   window.addEventListener('message', initGiscusTheme);
   
-  // Order should be: Dark --> Coffee --> Light --> Dark...
+  // Order should be: ...<-- Dark --> Cyberpunk --> Coffee --> Cyberspace --> Light -->...
   themeToggle.addEventListener('click', e =>  {
     var currentTheme = localStorage.getItem("theme");
     e.preventDefault();
-    if (currentTheme == "light") {
-      toggleTheme("dark");
-    } else if (currentTheme == "dark"){
-      toggleTheme("coffee");
-    } else {
-      toggleTheme("light");
+    switch (currentTheme) {
+      case "light":
+        toggleTheme("dark");
+        break;
+      case "dark":
+        toggleTheme("cyberpunk");
+        break;
+      case "cyberpunk":
+        toggleTheme("coffee");
+        break;
+      case "coffee":
+        toggleTheme("cyberspace");
+        break;
+      case "cyberspace":
+        toggleTheme("light");
+        break;
     }
   });
   
   preferDark.addEventListener("change", e => { 
-    toggleTheme(e.matches ? "dark" : "coffee") 
+    toggleTheme(e.matches ? "dark" : "cyberpunk") 
   });
 
   // User loading site for first time, enable their preferred color theme (light or dark)
@@ -76,14 +95,19 @@ function enableThemeToggle() {
     case "dark":
       toggleTheme("dark");
       break;
+    case "cyberpunk":
+      toggleTheme("cyberpunk");
+      break;
     case "coffee":
       toggleTheme("coffee");
+      break;
+    case "cyberspace":
+      toggleTheme("cyberspace");
       break;
     case "light":
       toggleTheme("light");
       break;
   }
-
 }
 
 function enableNavFold() {
@@ -211,7 +235,7 @@ function enableImgLightense() {
   window.addEventListener("load", () => Lightense(".prose img", { background: 'rgba(43, 43, 43, 0.19)' }));
 }
 
-
+// For greeting message in footer
 function getLocalDay() {
 
   var date = new Date();
@@ -228,6 +252,7 @@ function getLocalDay() {
   };
 }
 
+// For above function
 function generateRandGreetingAdjective(){
   // https://www.wordhippo.com/what-is/another-word-for/pleasant.html
   
@@ -237,7 +262,7 @@ function generateRandGreetingAdjective(){
   
   // https://stackoverflow.com/a/73245060
   const randadjective = synonyms[Math.floor(Math.random() * synonyms.length)];
-  // XD
+  // Indefinite articles nuance...
   const vowelregex = /[aeiou]/;
   const a_or_an = vowelregex.test(randadjective[0]) ? 'an ' : 'a ';
   
@@ -247,6 +272,51 @@ function generateRandGreetingAdjective(){
     greetingadj.innerHTML = a_or_an + randadjective + ' ';
   }
 }
+
+// lowkey better to merge the two funcs into one and update the ID at one go, no?
+
+async function updateCommitInfo() {
+  // Good ref I think: https://stackoverflow.com/a/51417209 + https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28
+  const apiURL = 'https://api.github.com/repos/bhodrolok/bhodrolok.github.io/commits/main';
+  const gentime = document.getElementById('build-time');
+
+  try {
+    const response = await fetch(apiURL);
+
+    if (!response.ok) {
+      throw new Error(`Status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    // first 7 digits = short SHA = enough to identify 
+    const fmtcommitsha = result.sha.substring(0,7);
+    // 'date' value is datestring in the ISO 8601 format (Z tz = UTC) i.e. "2011-10-05T14:48:00.000Z"
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format
+    // Create new UTC-formatted date object using this datestring as argument
+    const dateoptions = {
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#weekday
+      //weekday: "long",
+      day: "numeric", // '2-digit'
+      month:"short",
+      year: "numeric",
+      // timeZoneName: "short",
+    };
+    const resdate = new Date(result.commit.author.date);
+    const resdatelocalized = resdate.toLocaleDateString(navigator.language, dateoptions);
+    // For the anchor tag link
+    const commitghURL = `https://github.com/bhodrolok/bhodrolok.github.io/commit/${fmtcommitsha}`;
+    // Final string to be displayed in the foooter section
+    const fmtcommitinfo = `[<a href="${commitghURL}">${fmtcommitsha}</a>]  ${resdatelocalized}`;
+
+    if (gentime) {
+      // Update the HTML element
+      gentime.innerHTML = fmtcommitinfo;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 //--------------------------------------------
 
@@ -265,3 +335,4 @@ if (document.querySelector('.prose')) {
 }
 getLocalDay();
 generateRandGreetingAdjective();
+updateCommitInfo();
