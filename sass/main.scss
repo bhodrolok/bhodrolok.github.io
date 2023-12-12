@@ -707,7 +707,7 @@ footer {
   gap: 3px;
   color: var(--text-pale-color);
 
-  .copyright, .gen-time {
+  .copyright, .build-time {
     margin-right: auto;
   }
   
@@ -752,10 +752,7 @@ footer {
       flex-direction: column;
       gap: 0;
 
-      .copyright,
-      .credits,
-      .greeting,
-      .gen-time {
+      .copyright, .credits, .greeting, .build-time {
         margin: 0;
       }
     }

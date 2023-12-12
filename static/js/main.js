@@ -262,7 +262,7 @@ function generateRandGreetingAdjective(){
   
   // https://stackoverflow.com/a/73245060
   const randadjective = synonyms[Math.floor(Math.random() * synonyms.length)];
-  // XD
+  // Indefinite articles nuance...
   const vowelregex = /[aeiou]/;
   const a_or_an = vowelregex.test(randadjective[0]) ? 'an ' : 'a ';
   
@@ -274,6 +274,49 @@ function generateRandGreetingAdjective(){
 }
 
 // lowkey better to merge the two funcs into one and update the ID at one go, no?
+
+async function updateCommitInfo() {
+  // Good ref I think: https://stackoverflow.com/a/51417209 + https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28
+  const apiURL = 'https://api.github.com/repos/bhodrolok/bhodrolok.github.io/commits/main';
+  const gentime = document.getElementById('build-time');
+
+  try {
+    const response = await fetch(apiURL);
+
+    if (!response.ok) {
+      throw new Error(`Status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    // first 7 digits = short SHA = enough to identify 
+    const fmtcommitsha = result.sha.substring(0,7);
+    // 'date' value is datestring in the ISO 8601 format (Z tz = UTC) i.e. "2011-10-05T14:48:00.000Z"
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format
+    // Create new UTC-formatted date object using this datestring as argument
+    const dateoptions = {
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#weekday
+      //weekday: "long",
+      day: "numeric", // '2-digit'
+      month:"short",
+      year: "numeric",
+      // timeZoneName: "short",
+    };
+    const resdate = new Date(result.commit.author.date);
+    const resdatelocalized = resdate.toLocaleDateString(navigator.language, dateoptions);
+    // For the anchor tag link
+    const commitghURL = `https://github.com/bhodrolok/bhodrolok.github.io/commit/${fmtcommitsha}`;
+    // Final string to be displayed in the foooter section
+    const fmtcommitinfo = `[<a href="${commitghURL}">${fmtcommitsha}</a>]  ${resdatelocalized}`;
+
+    if (gentime) {
+      // Update the HTML element
+      gentime.innerHTML = fmtcommitinfo;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 //--------------------------------------------
 
@@ -292,3 +335,4 @@ if (document.querySelector('.prose')) {
 }
 getLocalDay();
 generateRandGreetingAdjective();
+updateCommitInfo();
