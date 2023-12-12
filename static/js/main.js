@@ -232,48 +232,41 @@ function addFootnoteBacklink() {
 }
 
 function enableImgLightense() {
+  // https://sparanoid.com/work/lightense-images/
   window.addEventListener("load", () => Lightense(".prose img", { background: 'rgba(43, 43, 43, 0.19)' }));
 }
 
 // For greeting message in footer
-function getLocalDay() {
-
-  var date = new Date();
+function generateDayGreeting() {
+  const date = new Date();
   // toLocaleString(locales, options): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
   // locales string obtained by navigator.language to get the (user) preferred language eg: 'en-US', 'de-DE'
   const options = {
+    // Only concerned with the day for this one
     weekday: 'long'
   };
-  var localday = date.toLocaleDateString(navigator.language, options);
+  const localday = date.toLocaleDateString(navigator.language, options);
   const greeting = document.getElementById("greeting"); 
   if (greeting) {
     // Do this iff an element with id 'greeting' exists in the page
-    greeting.innerHTML = localday;
+    greeting.innerHTML = `${generateRandGreetingAdjective()} <b>${localday}</b>`;
   };
 }
 
-// For above function
+// For above function, throw random synonym for the adjective 'pleasant' which I think goes well with the greeting
 function generateRandGreetingAdjective(){
   // https://www.wordhippo.com/what-is/another-word-for/pleasant.html
-  
   const synonyms = new Array(
     "delightful", "lovely", "charming", "amazing", "blissful", "blessed", "splendid", "superb", "enjoyable", "great", "enchanting"
   );
-  
-  // https://stackoverflow.com/a/73245060
-  const randadjective = synonyms[Math.floor(Math.random() * synonyms.length)];
+  // https://stackoverflow.com/questions/5915096/get-a-random-item-from-a-javascript-array#comment85738512_5915122
+  const randadjective = synonyms[Math.floor(synonyms.length * Math.random() | 0 )];
   // Indefinite articles nuance...
-  const vowelregex = /[aeiou]/;
+  const vowelregex = /[aeiou]/; 
   const a_or_an = vowelregex.test(randadjective[0]) ? 'an ' : 'a ';
-  
-  const greetingadj = document.getElementById('greeting-adj');
-  if (greetingadj) {
-    // kinda hacky with the span & all
-    greetingadj.innerHTML = a_or_an + randadjective + ' ';
-  }
+  const fmtres = ` ${a_or_an} ${randadjective} `;
+  return fmtres;
 }
-
-// lowkey better to merge the two funcs into one and update the ID at one go, no?
 
 async function updateCommitInfo() {
   // Good ref I think: https://stackoverflow.com/a/51417209 + https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28
@@ -288,7 +281,7 @@ async function updateCommitInfo() {
     }
 
     const result = await response.json();
-    // first 7 digits = short SHA = enough to identify 
+    // first 7 digits = short SHA-1 = enough to identify, ref: https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection 
     const fmtcommitsha = result.sha.substring(0,7);
     // 'date' value is datestring in the ISO 8601 format (Z tz = UTC) i.e. "2011-10-05T14:48:00.000Z"
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format
@@ -305,11 +298,18 @@ async function updateCommitInfo() {
     const resdatelocalized = resdate.toLocaleDateString(navigator.language, dateoptions);
     // For the anchor tag link
     const commitghURL = `https://github.com/bhodrolok/bhodrolok.github.io/commit/${fmtcommitsha}`;
-    // Final string to be displayed in the foooter section
-    const fmtcommitinfo = `[<a href="${commitghURL}">${fmtcommitsha}</a>]  ${resdatelocalized}`;
+    // Put it all together for ez access & mods later
+    const commitinfo = {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" height="12" width="15" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="currentColor" d="M320 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160zm156.8-48C462 361 397.4 416 320 416s-142-55-156.8-128H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H163.2C178 151 242.6 96 320 96s142 55 156.8 128H608c17.7 0 32 14.3 32 32s-14.3 32-32 32H476.8z"/></svg>`,
+      shortsha1: `${fmtcommitsha}`,
+      url: `${commitghURL}`,
+      date: `${resdatelocalized}`
+    };
+    // Final formatted string to be displayed
+    const fmtcommitinfo = `Rev: <a href="${commitinfo.url}">${commitinfo.shortsha1}</a> ${commitinfo.icon} ${commitinfo.date}`;
 
     if (gentime) {
-      // Update the HTML element
+      // Update HTML element
       gentime.innerHTML = fmtcommitinfo;
     }
   } catch (error) {
@@ -333,6 +333,5 @@ if (document.querySelector('.prose')) {
   addFootnoteBacklink();
   enableImgLightense();
 }
-getLocalDay();
-generateRandGreetingAdjective();
+generateDayGreeting();
 updateCommitInfo();

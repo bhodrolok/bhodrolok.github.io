@@ -1,6 +1,6 @@
 {% extends "_base.html" %}
 
-{% block page %}projects{% endblock page%}
+{% block page %}now{% endblock page%}
 {% block lang %}{% if section.extra.lang %}{{ section.extra.lang }}{% else %}{{ section.lang }}{% endif %}{% endblock lang %}
 {% block title %}{{ section.title }}{% endblock title %}
 {% block desc %}
@@ -11,9 +11,11 @@
 {% include "_header.html" %}
 <div id="wrapper">
   <main>
+    <!--
     {% set now_data = load_data(path="content/now/data.toml", format="toml") %}
     {% for current_date in now_data.timing -%}
     <blockquote>As of <b> {{ current_date.date }} </b></blockquote>
+  -->
     <section id="brief" class="prose">
       {{ section.content | trim | safe }}
     </section>

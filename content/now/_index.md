@@ -7,6 +7,8 @@ template = "now.html"
 lang = 'en'
 +++
 
+> As of December 12, 2023
+
 Some of the things that I am occupied with **now** are:
 
 - Working on [JobAppTrackr](https://github.com/Bhodrolok/JobAppTrackr), [rupantar](https://github.com/Bhodrolok/rupantar) and this [website](https://github.com/Bhodrolok/Bhodrolok.github.io)
