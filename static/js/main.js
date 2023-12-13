@@ -327,7 +327,7 @@ function getPageSourceGH(){
   const pageSourceURLPre = window.location.href;
   const lastCharRegEx = /.$/;
   // Remove the trailing slash (if it exists at end of URL) by replacing the character with a empty string
-  const pagesourceURLPost = (pageSourceURLPre.substring(-1) === '/') ? pageSourceURLPre.replace(lastCharRegEx, "") : pageSourceURLPre;
+  const pagesourceURLPost = (pageSourceURLPre.charAt(pageSourceURLPre.length - 1) === '/') ? pageSourceURLPre.replace(lastCharRegEx, "") : pageSourceURLPre;
   const pageSourceURLSegments = pagesourceURLPost.split("/");        
   const pageSourceFileName = pageSourceURLSegments[pageSourceURLSegments.length - 1];
   // The 'filename' will also be the directory(ies) under the main 'contents' directory, each with their own indexes
