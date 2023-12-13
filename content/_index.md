@@ -10,4 +10,6 @@ As an aspiring Software Engineer and DevOps enthusiast, I love assembling things
 
 I have developed a few projects with the goal of making my day-to-day life just a little bit _easier_. You can check them out [here](/projects).
 
+Check out what I am up to [now](/now).
+
 Thanks for stopping by my little corner on the Internet!

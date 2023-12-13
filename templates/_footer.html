@@ -6,9 +6,9 @@
       {% if config.extra.footer_credits %}
       <div class="credits" >
         Built with
-        <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola {% if config.extra.zola_version %} ({{ config.extra.zola_version }}) {% endif %} </a>
+        <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola{% if config.extra.zola_version %}({{ config.extra.zola_version }}){% endif %}</a>
         & 
-        <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene v2.1.2</a>
+        <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene(v2.1.2)</a>
         with tweaks.
         {% endif %}
       </div>
@@ -21,6 +21,9 @@
       <div class="build-time">
         <span id="build-time"></span>
         {% endif %}
+      </div>
+      <div class="page-source">
+        <span id="page-source-gh"></span>
       </div>
       {% if config.extra.show_user_greeting %}
       <div class="greeting">

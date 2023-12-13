@@ -306,7 +306,7 @@ async function updateCommitInfo() {
       date: `${resdatelocalized}`
     };
     // Final formatted string to be displayed
-    const fmtcommitinfo = `Rev: <a href="${commitinfo.url}">${commitinfo.shortsha1}</a> ${commitinfo.icon} ${commitinfo.date}`;
+    const fmtcommitinfo = `Rev: <a href="${commitinfo.url}" target="_blank">${commitinfo.shortsha1}</a> ${commitinfo.icon} ${commitinfo.date}`;
 
     if (gentime) {
       // Update HTML element
@@ -317,6 +317,27 @@ async function updateCommitInfo() {
   }
 }
 
+function getPageSourceGH(){
+  // (Base)Directory where the actual contents of the webpages are stored
+  const ghContentBaseURL = 'https://github.com/Bhodrolok/Bhodrolok.github.io/tree/main/content';
+  const sourceUpdateFooter = document.getElementById('page-source-gh');
+  // Get the HTML filename, ref: https://stackoverflow.com/a/4758125 + https://stackoverflow.com/a/73187826
+  // 1) current page URL --> separate into segmented elements of filepath (without backslash) 2) Get the last element i.e. filename
+  const pageSourceURLSegments = window.location.href.split("/");        
+  //const pageSourceFileName = pageSourceURLSegments.pop() || pageSourceURLSegments.pop(); 
+  const pageSourceFileName = pageSourceURLSegments[pageSourceURLSegments.length - 1];
+  // The 'filename' will also be the directory(ies) under the main 'contents' directory, each with their own indexes 
+  const ghDirectory = (pageSourceFileName.length > 0) ? `/${pageSourceFileName}` : ``;
+  // idea is 'projects' would be in ghContentURL + projects + `/_index.md`, and so on
+  const pageSourceURL = `${ghContentBaseURL}${ghDirectory}/_index.md`;
+  const viewIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="12" width="15" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="currentColor" d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg>`
+  const viewText = `view page source`;
+  const fmtUpdate = `${viewIcon} <a href="${pageSourceURL}" target="_blank">${viewText}</a>`;
+  if (sourceUpdateFooter){
+    // Update the HTML element with correct page source hosted in GitHub
+    sourceUpdateFooter.innerHTML = fmtUpdate;
+  }
+}
 
 //--------------------------------------------
 
@@ -335,3 +356,4 @@ if (document.querySelector('.prose')) {
 }
 generateDayGreeting();
 updateCommitInfo();
+getPageSourceGH();

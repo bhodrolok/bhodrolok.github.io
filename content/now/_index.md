@@ -7,7 +7,7 @@ template = "now.html"
 lang = 'en'
 +++
 
-> As of December 12, 2023
+> As of December 13, 2023
 
 Some of the things that I am occupied with **now** are:
 
