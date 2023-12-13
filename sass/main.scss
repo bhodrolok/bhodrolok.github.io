@@ -472,18 +472,22 @@ body.prose-page {
 body.homepage {
   #wrapper {
     width: 100%;
-    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;  
+  }
+  
+  main, footer {
+    width: 100%;
+    max-width: var(--homepage-max-width);
   }
 
   main {
-    width: 100%;
-    max-width: var(--homepage-max-width);
-    padding: 3em 0 6em;
+    padding: 3em 0 auto;
   }
-
+  
   #info {
     padding: 0 15px;
     display: flex;
