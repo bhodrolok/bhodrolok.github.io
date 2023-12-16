@@ -1,17 +1,15 @@
 <footer>
     <div class="top-section">
+      {% if config.extra.show_signature_line %}
       <div class="copyright">
         {{ config.extra.footer_copyright | trim | markdown | safe }}
       </div>
-      {% if config.extra.footer_credits %}
+      {% endif %}
+      {% if config.extra.show_footer_credits %}
       <div class="credits" >
-        Built with
-        <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola{% if config.extra.zola_version %}({{ config.extra.zola_version }}){% endif %}</a>
-        & 
-        <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene(v2.1.2)</a>
-        with tweaks.
-        {% endif %}
+        <span id="build-specs">build</span>
       </div>
+      {% endif %}
     </div>
 
     {% if config.extra.show_foooter %}
@@ -22,14 +20,16 @@
         <span id="build-time"></span>
         {% endif %}
       </div>
+      {% if config.extra.show_page_sources %}
       <div class="page-source">
         <span id="page-source-gh"></span>
       </div>
+      {% endif %}
       {% if config.extra.show_user_greeting %}
       <div class="greeting">
-        Hope you are having <span id="greeting"></span>!
-        {% endif %}
+        <span id="greeting"></span>
       </div>
+      {% endif %}
     </div>
     {% endif %}
 </footer>

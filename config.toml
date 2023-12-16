@@ -74,7 +74,7 @@ sections = [
 nav_separator = ">>"
 nav_wrapper_left = "["
 nav_wrapper_right = "]"
-nav_wrapper_separator = ","
+nav_wrapper_separator = ";"
 blur_effect = true                    # Whether to turn on blur effect on navigation bar
 
 # blogging & posts
@@ -91,18 +91,20 @@ outdate_alert_days = 120              # How many days will a post be outdated by
 outdate_alert_text_before = "This article was last updated "
 outdate_alert_text_after = " days ago and may be out of date."
 
-# Misc.
-footer_copyright = "Made with ❤️ 🥞 🍛 ☕"
-footer_credits = true                 # Whether to show credits in footer
-zola_version = "v0.17.2"
-
 not_found_title = "404"
 not_found_error_text = "Uh-oh! Looks like this page is out for lunch."
 not_found_recover_text = "« Let's get you back on track »"
+
+# Misc.
+show_footer_credits = true                  # Whether to show credits in footer
+footer_copyright = "Made with ❤️ 🥞 🍛 ☕"
+show_signature_line = true                 # Whether to show a short acknowledgement of the tool/framework/theme used
 
 # Stuff below a horizontal break in the regular footer... extra footer
 show_foooter = true
 # latest commit info
 show_build_time = true
+# page source (default GitHub)
+show_page_sources = true
 # fluff
 show_user_greeting = true

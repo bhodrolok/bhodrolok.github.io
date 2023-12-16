@@ -400,3 +400,4 @@ FodyWeavers.xsd
 themes/serene
 config.*.toml
 public/
+static/gifs/*

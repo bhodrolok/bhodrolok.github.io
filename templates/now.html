@@ -11,18 +11,9 @@
 {% include "_header.html" %}
 <div id="wrapper">
   <main>
-    <!--
-    {% set now_data = load_data(path="content/now/data.toml", format="toml") %}
-    {% for current_date in now_data.timing -%}
-    <blockquote>As of <b> {{ current_date.date }} </b></blockquote>
-  -->
     <section id="brief" class="prose">
       {{ section.content | trim | safe }}
     </section>
-    <hr/>
-    {%- endfor %}
-    <p>This page is inspired by <a href="https://sive.rs/" target="_blank">Derek Sivers</a> and the <a href="https://nownownow.com/about" target="_blank"> Now movement</a></p>
-    <p>To see what other people are upto now, see <a href="https://nownownow.com" target="_blank">nownownow</a>. Consider adding one to your site if you have one!</p>
   </main>
   {% include "_footer.html" -%}
 </div>

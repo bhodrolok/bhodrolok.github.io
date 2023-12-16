@@ -53,6 +53,18 @@ a:focus-visible {
   }
 }
 
+// Ref: https://weekendprojects.dev/posts/css-spin-animation-on-hover/ + https://stackoverflow.com/a/21484771
+// Hover on element = rotate, Hover off element = reverse rotation
+#theme-toggle {
+  transition-duration: 1.5s;
+  transition-property: transform;
+}
+
+#theme-toggle:hover {
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+}
+
 /* prose
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
