@@ -66,7 +66,7 @@ var typos = {
 	v:['c','f','b'],
 	b:['v','g','n'],
 	n:['b','h','m'],
-	m:['n','j',','],
+	m:['n','j',',']
 }
 
 async function typo(element, text) {
@@ -146,7 +146,7 @@ async function typo(element, text) {
 		var speed_lower = parseFloat(typing_speed) - parseInt(typing_jitter);
 		var speed_upper = parseFloat(typing_speed) + parseInt(typing_jitter);
 		
-		delay = num_between(speed_lower,speed_upper);
+		delay = num_between(speed_lower, speed_upper);
 		
 		// Chance of longer delay though
 		if(chance(5)) delay = num_between(100, 200);

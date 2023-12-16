@@ -245,11 +245,12 @@ function generateDayGreeting() {
     // Only concerned with the day for this one
     weekday: 'long'
   };
-  const localday = date.toLocaleDateString(navigator.language, options);
+  const localDay = date.toLocaleDateString(navigator.language, options);
   const greeting = document.getElementById("greeting"); 
+  const fmtGreeting = `Hope you are having ${generateRandGreetingAdjective()} <b>${localDay}</b>!`;
   if (greeting) {
     // Do this iff an element with id 'greeting' exists in the page
-    greeting.innerHTML = `${generateRandGreetingAdjective()} <b>${localday}</b>`;
+    greeting.innerHTML = fmtGreeting;
   };
 }
 
@@ -257,7 +258,7 @@ function generateDayGreeting() {
 function generateRandGreetingAdjective(){
   // https://www.wordhippo.com/what-is/another-word-for/pleasant.html
   const synonyms = new Array(
-    "delightful", "lovely", "charming", "amazing", "blissful", "blessed", "splendid", "superb", "enjoyable", "great", "enchanting"
+    "delightful", "amiable", "fine", "gratifying", "refreshing", "lovely", "charming", "amazing", "blissful", "blessed", "splendid", "superb", "enjoyable", "great", "enchanting"
   );
   // https://stackoverflow.com/questions/5915096/get-a-random-item-from-a-javascript-array#comment85738512_5915122
   const randadjective = synonyms[Math.floor(synonyms.length * Math.random() | 0 )];
@@ -266,6 +267,18 @@ function generateRandGreetingAdjective(){
   const a_or_an = vowelregex.test(randadjective[0]) ? 'an ' : 'a ';
   const fmtres = ` ${a_or_an} ${randadjective} `;
   return fmtres;
+}
+
+function showBuildSpecs(){
+  const specsElement = document.getElementById("build-specs");
+  const fmtSpecs = `Built with
+  <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola(v0.17.2)</a>
+  & 
+  <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene(v2.1.2)</a>
+  with tweaks.`
+  if (specsElement){
+    specsElement.innerHTML = fmtSpecs;
+  }
 }
 
 async function updateCommitInfo() {
@@ -363,6 +376,8 @@ if (document.querySelector('.prose')) {
   addFootnoteBacklink();
   enableImgLightense();
 }
+
+showBuildSpecs();
 generateDayGreeting();
 updateCommitInfo();
 getPageSourceGH();
