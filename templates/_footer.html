@@ -5,6 +5,11 @@
         {{ config.extra.footer_copyright | trim | markdown | safe }}
       </div>
       {% endif %}
+      {% if config.extra.show_audio %}
+      <div class="audio">
+        <button id="audio-1"></button>
+      </div>
+      {% endif %}
       {% if config.extra.show_footer_credits %}
       <div class="credits" >
         <span id="build-specs">build</span>
@@ -18,8 +23,8 @@
       {% if config.extra.show_build_time %}
       <div class="build-time">
         <span id="build-time"></span>
-        {% endif %}
       </div>
+      {% endif %}
       {% if config.extra.show_page_sources %}
       <div class="page-source">
         <span id="page-source-gh"></span>
