@@ -402,3 +402,4 @@ config.*.toml
 public/
 static/gifs/*
 static/audio/*
+
