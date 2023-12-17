@@ -401,3 +401,5 @@ themes/serene
 config.*.toml
 public/
 static/gifs/*
+static/audio/*
+

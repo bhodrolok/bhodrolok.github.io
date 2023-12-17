@@ -1,10 +1,18 @@
+# https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
+# https://www.getzola.org/documentation/deployment/github-pages/
 name: Deploy Zola Site to GitHub Pages
+run-name: ${{ github.actor }}'s building & deploying the zola site to GitHub Pages! 
 
 on:
   push:
     branches:
       - main 
-  pull_request:
+
+  # Skip doing anything on PRs (for now)
+  #pull_request:
+
+  # Allows workflow to be manually run from the Actions tab
+  workflow_dispatch:
   
 jobs:
   build:
@@ -12,9 +20,10 @@ jobs:
     # Build, not deploy, iff PR
     if: github.ref != 'refs/heads/main'
     steps:
-      - name: Checkout main
+      - name: Checkout main code so workflow can be accessed
         uses: actions/checkout@v3.0.0
-      - name: Build only 
+
+      - name: build and deploy zola site to the main branch as GitHub Pages
         uses: shalzz/zola-deploy-action@master
         env:
           # https://github.com/shalzz/zola-deploy-action#environment-variables
@@ -27,10 +36,15 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    name: Build zola site + Deploy to GitHub Pages
+
     steps:
-      - name: Checkout main
+      - name: Checkout main code so workflow can be accessed
         uses: actions/checkout@v3.0.0
-      - name: Build and deploy
+
+      - name: build and deploy zola site to the main branch as GitHub Pages
         uses: shalzz/zola-deploy-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAGES_ZOLA_TOKEN }}
+          OUT_DIR: public
+          PAGES_BRANCH: gh-pages
