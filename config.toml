@@ -66,7 +66,8 @@ sections = [
     # { name = "about", path = "/about", is_external = false },
     # { name = "blog", path = "/blog", is_external = false },
     { name = "projects", path = "/projects", is_external = false },
-    { name = "now", path = "/now", is_external = false }
+    { name = "now", path = "/now", is_external = false },
+    { name = "colophon", path = "/colophon", is_external = false }
 ]
 
 
