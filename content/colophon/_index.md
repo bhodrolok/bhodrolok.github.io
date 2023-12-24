@@ -1,5 +1,5 @@
 +++
-title = "Colophon"
+title = "/colophon"
 description = "Info about this site itself"
 template = "prose.html"
 
