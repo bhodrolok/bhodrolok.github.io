@@ -1,4 +1,6 @@
-<header {% if config.extra.blur_effect %} class="blur" {% endif %}>
+{% if section.extra.blur_effect is defined %}{% set blur_effect = section.extra.blur_effect %}{% else %}{% set blur_effect = config.extra.blur_effect %}
+{% endif %}
+<header {% if blur_effect %} class="blur" {% endif %}>
   <div id="header-wrapper">
     <nav>
       <a href="/">{{ config.extra.id }}</a>

@@ -9,9 +9,10 @@ math = false
 mermaid = false
 copy = false
 comment = true
+blur_effect = true
 +++
-
-# About this site
+---
+## About this site
 
 - ***Hosting***: Deployed and hosted on [GitHub Pages](https://pages.github.com/) with the source code available on [GitHub](https://github.com/Bhodrolok/Bhodrolok.github.io).
 - ***First published***: May 11, 2023
