@@ -41,6 +41,7 @@ function enableThemeToggle() {
   }
   
   function toggleGiscusTheme(theme) {
+    // https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#parent-to-giscus-message-events
     const iframe = document.querySelector('iframe.giscus-frame');
     if (iframe) iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: `${location.origin}/giscus_${theme}.css` } } }, 'https://giscus.app');
   }
