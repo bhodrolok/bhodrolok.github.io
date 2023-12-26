@@ -20,6 +20,7 @@ blur_effect = true
 - ***Typography***: Fonts used are [Karma](https://fonts.google.com/specimen/Karma) and [Work Sans](https://fonts.google.com/specimen/Work+Sans). Self-hosted.
 - ***Icons***: SVG icons used from [Remix Icon](https://remixicon.com) and [Font Awesome](https://fontawesome.com). Favicon made with [Microsoft Designer](https://designer.microsoft.com).
 - ***Testing***: Conducted in the latest versions of Google Chrome, Microsoft Edge, Safari, Mozilla Firefox, and [Floorp](https://github.com/Floorp-Projects/Floorp). 
+- ***Commenting system***: Enabled by [giscus](https://giscus.app) which uses [GitHub Discussions](https://github.com/features/discussions).
 - Any questions, concerns, or issues about this website or its operation can be commented below or submitted as a [GitHub issue](https://github.com/Bhodrolok/Bhodrolok.github.io/issues). 
 ---
 > A colophon is a page or section, like a footer, of a site that describes how the site is made, with what tools, supporting what technologies. -- [IndieWeb](https://indieweb.org/colophon)
