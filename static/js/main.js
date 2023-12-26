@@ -43,7 +43,32 @@ function enableThemeToggle() {
   function toggleGiscusTheme(theme) {
     // https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#parent-to-giscus-message-events
     const iframe = document.querySelector('iframe.giscus-frame');
-    if (iframe) iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: `${location.origin}/giscus_${theme}.css` } } }, 'https://giscus.app');
+    var giscusTheme, giscusURL;
+    switch(theme){
+      case "dark":
+        giscusTheme = "dark_dimmed";
+        giscusURL = "https://giscus.app/themes";
+        break;
+      case "cyberpunk":
+        giscusTheme = "transparent_dark";
+        giscusURL = "https://giscus.app/themes";
+        break;
+      case "coffee":
+        giscusTheme = `giscus_${theme}`;
+        giscusURL = location.origin;
+        break;
+      case "cyberspace":
+        giscusTheme = "cobalt";
+        giscusURL = "https://giscus.app/themes";
+        break;
+      case "light":
+        giscusTheme = `giscus_${theme}`;
+        giscusURL = location.origin;
+        break;
+    }
+    var giscusThemeSetter = `${giscusURL}/${giscusTheme}.css`
+    console.log(`giscusTheme: ${giscusTheme}\ngiscusURL: ${giscusURL}\ngiscusThemeSetter: ${giscusThemeSetter}`);
+    if (iframe) iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: giscusThemeSetter } } }, 'https://giscus.app');
   }
 
   function initGiscusTheme() {
