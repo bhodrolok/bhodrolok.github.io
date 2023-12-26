@@ -298,9 +298,9 @@ function generateRandGreetingAdjective(){
 function showBuildSpecs(){
   const specsElement = document.getElementById("build-specs");
   const fmtSpecs = `Built with
-  <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola(v0.17.2)</a>
+  <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola</a>
   & 
-  <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene(v2.1.2)</a>
+  <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene</a>
   with tweaks.`
   if (specsElement){
     specsElement.innerHTML = fmtSpecs;
