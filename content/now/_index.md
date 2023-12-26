@@ -15,8 +15,8 @@ Some of the things that I am occupied with **now** are:
 
 - Working on [JobAppTrackr](https://github.com/Bhodrolok/JobAppTrackr), [rupantar](https://github.com/Bhodrolok/rupantar) and this [website](https://github.com/Bhodrolok/Bhodrolok.github.io).
 - Learning C# and Golang.
-- Finding ways to improve my previous projects with my current knowledge 
-- Trying to self-host some apps & services on my home server <span class='natural-type'>without breaking it.</span>
+- Finding ways to improve my previous projects with my current knowledge.
+- Trying to self-host some apps & services on my servers <span class='natural-type'>without breaking them.</span>
 - Practicing mindfulness and gratitude.
 - Catching up on my reading list and backlog of movies.
 
