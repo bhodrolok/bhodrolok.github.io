@@ -10,7 +10,7 @@ function enableThemeToggle() {
       case "dark":
         document.body.classList.add('dark'); 
         document.body.classList.remove('coffee', 'light', 'cyberpunk', 'cyberspace');
-        themeToggle.innerHTML = themeToggle.dataset.robotIcon; 
+        themeToggle.innerHTML = themeToggle.dataset.robotIcon;
         break;
       case "cyberpunk":
         document.body.classList.add('cyberpunk');
@@ -67,18 +67,21 @@ function enableThemeToggle() {
         break;
     }
     var giscusThemeSetter = `${giscusURL}/${giscusTheme}.css`
-    console.log(`giscusTheme: ${giscusTheme}\ngiscusURL: ${giscusURL}\ngiscusThemeSetter: ${giscusThemeSetter}`);
-    if (iframe) iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: giscusThemeSetter } } }, 'https://giscus.app');
+    // console.log(`giscusTheme: ${giscusTheme}\ngiscusURL: ${giscusURL}\ngiscusThemeSetter: ${giscusThemeSetter}`);
+    if (iframe) {
+      iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: giscusThemeSetter } } }, 'https://giscus.app');
+    }
   }
 
   function initGiscusTheme() {
+    // respect user preferred color theme
     toggleGiscusTheme(localStorage.getItem("theme") || (preferDark.matches ? "dark" : "light"));
     window.removeEventListener('message', initGiscusTheme);
   }
   
   window.addEventListener('message', initGiscusTheme);
   
-  // Order should be: ...<-- Dark --> Cyberpunk --> Coffee --> Cyberspace --> Light -->...
+  // Change-on-Click order is ...<-- Dark --> Cyberpunk --> Coffee --> Cyberspace --> Light -->...
   themeToggle.addEventListener('click', e =>  {
     var currentTheme = localStorage.getItem("theme");
     e.preventDefault();
@@ -102,8 +105,12 @@ function enableThemeToggle() {
   });
   
   preferDark.addEventListener("change", e => { 
-    toggleTheme(e.matches ? "dark" : "cyberpunk") 
+    toggleTheme(e.matches ? "dark" : "cyberpunk");
   });
+
+  preferLight.addEventListener("change", e => {
+    toggleTheme(e.matches ? "light" : "dark");
+  })
 
   // User loading site for first time, enable their preferred color theme (light or dark)
   if (!localStorage.getItem("theme")) {
@@ -387,6 +394,7 @@ function getPageSourceGH(){
   }
 }
 
+// NOT USED YET
 function enableAudio(){
   // Good ref I think: https://dobrian.github.io/cmp/topics/sample-recording-and-playback-with-web-audio-api/1.loading-and-playing-sound-files.html
   const audioElement = document.getElementById('audio-1');
@@ -406,6 +414,31 @@ function enableAudio(){
     });
   }
 }
+
+async function injectSVGIcon(iconName, elementId) {
+  // all icons located in the same directory
+  const iconPath = `/static/icons/${iconName}.svg`;
+  try{
+    const response = await fetch(iconPath);
+    // Bad response handling i.e. outside 200 to 299
+    if (!response.ok){
+      throw new Error(response.status);
+    }
+
+    const iconData = await response.text();
+    // return iconData;
+    const elementLoc = document.getElementById(elementId);
+
+    // Update the HTML element (if it exists in the HTML page)
+    if (elementLoc){
+      elementLoc.innerHTML = iconData;
+    }
+  }
+  catch (error){
+    throw error;
+  }
+}
+
 
 //--------------------------------------------
 
