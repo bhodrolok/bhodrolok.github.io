@@ -97,9 +97,11 @@ not_found_error_text = "Uh-oh! Looks like this page is out for lunch."
 not_found_recover_text = "« Let's get you back on track »"
 
 # Misc.
-show_footer_credits = true                  # Whether to show credits in footer
-footer_copyright = "Made with ❤️ 🥞 🍛 ☕"
-show_signature_line = true                 # Whether to show a short acknowledgement of the tool/framework/theme used
+show_footer_tool_credits = false                # Whether to show 'build tool' credits
+show_footer_cc_license = true                   # Whether to show CC/Creative Commons license 
+footer_copyright_license = "CC BY-SA 4.0"
+show_footer_signature = true                      
+footer_signature = "Made with ❤️ 🥞 🍛 ☕"
 
 # Stuff below a horizontal break in the regular footer... extra footer
 show_foooter = true

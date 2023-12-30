@@ -1,24 +1,19 @@
 <footer>
     <div class="top-section">
-      {% if config.extra.show_signature_line %}
+      {% if config.extra.show_footer_signature %}
       <div class="copyright">
-        {{ config.extra.footer_copyright | trim | markdown | safe }}
+        {{ config.extra.footer_signature | trim | markdown | safe }}
       </div>
       {% endif %}
-
-      {% if config.extra.show_audio %}
-      <div class="audio">
-        <button id="audio-1"></button>
-      </div>
-      {% endif %}
-
-      {% if config.extra.show_footer_credits %}
-      <div class="credits" >
-        <span id="build-specs">build</span>
+      
+      {% if config.extra.show_footer_cc_license %}
+      <div class="credits">
+        <span id="credits-license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> {{ config.extra.footer_copyright_license | trim | markdown | safe }} </a></span>
       </div>
       {% endif %}
     </div>
 
+    <!--Another one!-->
     {% if config.extra.show_foooter %}
     <hr />
     <div class="bottom-section">
