@@ -8,7 +8,7 @@ lang = 'en'
 math = false
 mermaid = false
 copy = false
-comment = false         # https://github.com/giscus/giscus/issues/1269
+comment = true
 blur_effect = true
 +++
 
