@@ -7,7 +7,7 @@ template = "now.html"
 lang = 'en'
 +++
 
-> <span class='natural-type'> As of January 6, 2024 </span>
+> <span class='natural-type'> As of January 9, 2024 </span>
 
 Some of the things that I am occupied with **now** are:
 
