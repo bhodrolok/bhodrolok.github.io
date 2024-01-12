@@ -7,7 +7,7 @@ template = "now.html"
 lang = 'en'
 +++
 
-> <span class='natural-type'> As of January 9, 2024 </span>
+> <span class='natural-type'> As of January 12, 2024 </span>
 
 Some of the things that I am occupied with **now** are:
 
@@ -16,6 +16,7 @@ Some of the things that I am occupied with **now** are:
 - Gitting gud at [bash](https://www.man7.org/linux/man-pages/man1/bash.1.html) scripting.
 - Finding ways to improve my previous projects.
 - Trying to self-host some apps & services on my servers <span class='natural-type'>without breaking them.</span>
+- Playing around with [OCI](https://www.oracle.com/in/cloud/compute/virtual-machines/).
 - Practicing mindfulness and gratitude.
 - Catching up on my reading list and movies backlog.
 
