@@ -101,7 +101,7 @@ show_footer_tool_credits = false                # Whether to show 'build tool' c
 show_footer_cc_license = true                   # Whether to show CC/Creative Commons license 
 footer_copyright_license = "CC BY-SA 4.0"
 show_footer_signature = true                      
-footer_signature = "Made with ❤️ 🥞 🍛 ☕"
+footer_signature = "</> with ❤️ 🥞 🍛 ☕"
 
 # Stuff below a horizontal break in the regular footer... extra footer
 show_foooter = true
