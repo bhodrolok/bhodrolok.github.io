@@ -397,6 +397,8 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
+xd/*
+
 themes/serene
 config.*.toml
 public/
