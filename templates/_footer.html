@@ -14,16 +14,16 @@
     </div>
 
     <!--Another one!-->
-    {% if config.extra.show_foooter %}
+    {% if config.extra.show_sub_footer %}
     <hr />
     <div class="bottom-section">
-      {% if config.extra.show_build_time %}
-      <div class="build-time">
-        <span id="build-time"></span>
+      {% if config.extra.show_git_commit_info %}
+      <div class="git-commit-info">
+        <span id="git-commit-info"></span>
       </div>
       {% endif %}
 
-      {% if config.extra.show_page_sources %}
+      {% if config.extra.show_page_source %}
       <div class="page-source">
         <span id="page-source-gh"></span>
       </div>

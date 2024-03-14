@@ -474,7 +474,7 @@ function generateRandGreetingAdjective(){
 async function updateCommitInfo() {
   // Good ref I think: https://stackoverflow.com/a/51417209 + https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28
   const apiURL = 'https://api.github.com/repos/bhodrolok/bhodrolok.github.io/commits/main';
-  const gentime = document.getElementById('build-time');
+  const gentime = document.getElementById('git-commit-info');
 
   try {
     const response = await fetch(apiURL);

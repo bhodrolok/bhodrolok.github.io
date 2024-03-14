@@ -1,5 +1,5 @@
 # Based off of: https://github.com/isunjn/serene/blob/main/example-config.toml 
-# Further reading: https://www.getzola.org/documentation/getting-started/configuration/
+# Further reading for the SSG: https://www.getzola.org/documentation/getting-started/configuration/
 
 base_url = "https://bhodrolok.github.io" 
 title = "R C's Portfolio"
@@ -100,14 +100,11 @@ not_found_recover_text = "« Let's get you back on track »"
 show_footer_tool_credits = false                # Whether to show 'build tool' credits
 show_footer_cc_license = true                   # Whether to show CC/Creative Commons license 
 footer_copyright_license = "CC BY-SA 4.0"
-show_footer_signature = true                      
+show_footer_signature = true                    # Whether to show the footer signature
 footer_signature = "</> with ❤️ 🥞 🍛 ☕"
 
-# Stuff below a horizontal break in the regular footer... extra footer
-show_foooter = true
-# latest commit info
-show_build_time = true
-# page source (default GitHub)
-show_page_sources = true
-# fluff
-show_user_greeting = true
+# Stuff below a horizontal break in the regular footer... a sub-footer if you will...
+show_sub_footer = true
+show_git_commit_info = true                     # Whether to show git commit info per latest website deployment (currently showslast commit short SHA-1 hash, date)
+show_page_source = true                         # Whether to show webpage source code link (currently hosted remotely on GitHub) 
+show_user_greeting = true                       # Whether to show user greeting

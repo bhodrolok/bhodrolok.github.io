@@ -726,7 +726,7 @@ footer {
   gap: 3px;
   color: var(--text-pale-color);
 
-  .copyright, .build-time {
+  .copyright, .git-commit-info {
     margin-right: auto;
   }
   
@@ -769,7 +769,7 @@ footer {
       flex-direction: column;
       gap: 0;
 
-      .copyright, .credits, .greeting, .build-time {
+      .copyright, .credits, .greeting, .git-commit-info {
         margin: 0;
       }
     }
