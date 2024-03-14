@@ -11,14 +11,14 @@ default_language = "en"
 output_dir = "public"
 compile_sass = true
 minify_html = true
-build_search_index = false            # Keep this false, search is temporarily unsupported
+build_search_index = false          # Keep this false, search is temporarily unsupported
 
-generate_feed = true                 # Whether to generate a feed file in root, read docs for more info about rss feed
-feed_filename = "feed.xml"            # The file name of feed, "feed.xml" / "atom.xml" / "rss.xml", read docs for more info
+generate_feed = true                # Whether to generate a feed file in root, read docs for more info about rss feed
+feed_filename = "feed.xml"          # File name suffix for RSS feed, "feed.xml" / "atom.xml" / "rss.xml"
 taxonomies = [{ name = "tags" }, { name = "categories" }]
 
 [markdown]
-# Highlighting = hl = for code blocks in blog posts
+# Highlighting = hl = for code blocks within blog posts
 highlight_code = true
 highlight_theme = "css"
 extra_syntaxes_and_themes = ["highlight_themes"]
@@ -29,7 +29,6 @@ highlight_themes_css = [
     { theme = "codehl-cyberpunk", filename = "hl-cyberpunk.css"},
     { theme = "codehl-cyberspace", filename = "hl-cyberspace.css" }
 ]
-
 render_emoji = true                     # Whether to translate emoji aliases (shortcodes) to Unicode emoji equivalent            
 # target="_blank" rel="nofollow noreferrer" settings for some <a> links
 external_links_target_blank = true
@@ -57,10 +56,14 @@ links = [
     { name = "Email", icon = "email-alt", url = "mailto:korbolorbo1214@proton.me" },
     { name = "LinkedIn", icon = "linkedin", url = "https://linkedin.com/in/ranadipc" },
 ]
-show_resume = true
+show_resume = true                    # Whether to show resume 
 display_id = true                     # Whether to display your id on homepage
 
-homepage_layout = "about"             # "about" | "list"
+homepage_layout = "about"             # "about" | "list" | "recent"
+
+recent_max = 15
+recent_more = true
+recent_more_text = "more »"
 
 sections = [
     # { name = "about", path = "/about", is_external = false },
@@ -70,8 +73,7 @@ sections = [
     { name = "colophon", path = "/colophon", is_external = false }
 ]
 
-
-# Nav bar
+# Nav bar tweaking
 nav_separator = ">>"
 nav_wrapper_left = "["
 nav_wrapper_right = "]"
@@ -87,23 +89,25 @@ copy = true                           # Whether to add a copy button on code blo
 comment = false                       # Whether to show giscus comment section by default, see https://giscus.app for more info
 display_tags = true                   # Whether to display tags on post pages by default
 truncate_summary = false              # Whether to truncate the summary of a post by default
+
 outdate_alert = false                 # Whether to show outdate alert by default
 outdate_alert_days = 120              # How many days will a post be outdated by default
 outdate_alert_text_before = "This article was last updated "
 outdate_alert_text_after = " days ago and may be out of date."
 
+# From downtown
 not_found_title = "404"
 not_found_error_text = "Uh-oh! Looks like this page is out for lunch."
 not_found_recover_text = "« Let's get you back on track »"
 
-# Misc.
+# Footer tweaking
 show_footer_tool_credits = false                # Whether to show 'build tool' credits
 show_footer_cc_license = true                   # Whether to show CC/Creative Commons license 
 footer_copyright_license = "CC BY-SA 4.0"
 show_footer_signature = true                    # Whether to show the footer signature
 footer_signature = "</> with ❤️ 🥞 🍛 ☕"
 
-# Stuff below a horizontal break in the regular footer... a sub-footer if you will...
+# Footer 2nd layer
 show_sub_footer = true
 show_git_commit_info = true                     # Whether to show git commit info per latest website deployment (currently showslast commit short SHA-1 hash, date)
 show_page_source = true                         # Whether to show webpage source code link (currently hosted remotely on GitHub) 

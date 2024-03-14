@@ -5,6 +5,7 @@ tags = ["ASP.NET", "C#", "React", "MongoDB"]
 links = [
         {name = "GitHub", url = "https://github.com/Bhodrolok/JobAppTrackr"}
 ]
+#img = "https://placehold.co/600x400"
 
 [[project]]
 name = "rupantar"
