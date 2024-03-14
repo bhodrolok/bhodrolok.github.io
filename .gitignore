@@ -399,7 +399,7 @@ FodyWeavers.xsd
 
 xd/*
 
-themes/serene
+themes/*
 config.*.toml
 public/
 static/gifs/*
