@@ -398,8 +398,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 xd/*
-
-themes/serene
+themes/*
 config.*.toml
 public/
 static/gifs/*
