@@ -398,7 +398,6 @@ FodyWeavers.xsd
 *.sln.iml
 
 xd/*
-
 themes/*
 config.*.toml
 public/
