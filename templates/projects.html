@@ -14,12 +14,17 @@
     {% set data = load_data(path="content/projects/data.toml", format="toml") %}
     {% for proj in data.project %}
     <div class="proj">
-      <p class="name">{{ proj.name }}</p>
-      <div class="desc">{{ proj.desc | trim | markdown | safe }}</div>
+      <div class="content">
+        <p class="name">{{ proj.name }}</p>
+        <div class="desc">{{ proj.desc | trim | markdown | safe }}</div>
+      </div>
+      {% if proj.img %}
+      <img src="{{ proj.img }}" alt="{{ proj.name }}" />
+      {% endif %}
       <div class="more">
         <div class="tags">
           {% for tag in proj.tags %}
-          <div><span>#</span>{{ tag }}</div>
+          <div><span>◈</span><i>{{ tag }}</i></div>
           {% endfor %}
         </div>
         <div class="links">
