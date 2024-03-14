@@ -1,11 +1,23 @@
+/**
+ * Enable theme toggle functionality on the webpage.
+ * Available themes currently in order of toggling: dark, cyberpunk, cyberspace, coffee, light.
+ * 
+ * @return {void} 
+ */
 function enableThemeToggle() {
   const themeToggle = document.querySelector('#theme-toggle');
   const hlLink = document.querySelector('link#hl');
   const preferDark = window.matchMedia("(prefers-color-scheme: dark)");
   const preferLight = window.matchMedia( "(prefers-color-scheme: light)" );
   
+  /**
+   * Change webpage theme to given theme.
+   * Order of toggling: dark to cyberpunk, cyberpunk to cyberspace, cyberspace to coffee, coffee to light, light to dark.
+   * 
+   * @param {string} theme - The theme to toggle to
+   * @return {void} 
+   */
   function toggleTheme(theme) {
-    // ...<-- Dark --> Cyberpunk --> Coffee --> Cyberspace --> Light -->...
     switch (theme){
       case "dark":
         document.body.classList.add('dark'); 
@@ -36,10 +48,19 @@ function enableThemeToggle() {
 
     if (hlLink) hlLink.href = `/hl-${theme}.css`;
     
-    localStorage.setItem("theme", theme);
+    // Changed from localStorage in favor of short-term session-based data
+    sessionStorage.setItem("theme", theme);
     toggleGiscusTheme(theme);
   }
   
+  /**
+   * Change Giscus theme to given theme to match the webpage theme.
+   * Order of theme change is the same as toggleTheme.
+   *
+   * @param {string} theme - The theme to be applied/toggled to (options: "dark", "cyberpunk", "coffee", "cyberspace", "light")
+   * @return {void}
+   * @see toggleTheme 
+   */
   function toggleGiscusTheme(theme) {
     // https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#parent-to-giscus-message-events
     const iframe = document.querySelector('iframe.giscus-frame');
@@ -73,17 +94,20 @@ function enableThemeToggle() {
     }
   }
 
-  function initGiscusTheme() {
-    // respect user preferred color theme
-    toggleGiscusTheme(localStorage.getItem("theme") || (preferDark.matches ? "dark" : "light"));
+  /**
+   * Initialize the Giscus theme respecting the user preferred color theme.
+   *
+   */
+  function initGiscusTheme(evnt) {
+    if (evnt.origin !== 'https://giscus.app') return;
+    if ( !(typeof evnt.data === 'object' && evnt.data.giscus) ) return;
+    toggleGiscusTheme(sessionStorage.getItem("theme") || (preferDark.matches ? "dark" : "light"));
     window.removeEventListener('message', initGiscusTheme);
   }
   
-  window.addEventListener('message', initGiscusTheme);
-  
-  // Change-on-Click order is ...<-- Dark --> Cyberpunk --> Coffee --> Cyberspace --> Light -->...
+  window.addEventListener('message', initGiscusTheme);  
   themeToggle.addEventListener('click', e =>  {
-    var currentTheme = localStorage.getItem("theme");
+    var currentTheme = sessionStorage.getItem("theme");
     e.preventDefault();
     switch (currentTheme) {
       case "light":
@@ -113,18 +137,18 @@ function enableThemeToggle() {
   })
 
   // User loading site for first time, enable their preferred color theme (light or dark)
-  if (!localStorage.getItem("theme")) {
+  if (!sessionStorage.getItem("theme")) {
     if (preferDark.matches) { 
       toggleTheme("dark");
     } else if (preferLight.matches) {
       toggleTheme("light");
     } else {
-      // Not sure if this even runs, surely its always either light or dark, no?
+      // For the future ;)
       toggleTheme("coffee");
     }
   }
-
-  switch (localStorage.getItem("theme")){
+  // else(sessionStorage.getItem("theme"))...
+  switch (sessionStorage.getItem("theme")){
     case "dark":
       toggleTheme("dark");
       break;
@@ -143,6 +167,46 @@ function enableThemeToggle() {
   }
 }
 
+/**
+ * Enable prerendering or prefetching of certain links on mouse hover or touch for faster loading.
+ *
+ * @return {void} 
+ */
+function enablePrerender() {
+  const prerender = (a) => {
+    if (!a.classList.contains('instant')) return;
+    const script = document.createElement('script');
+    script.type = 'speculationrules';
+    script.textContent = JSON.stringify({ prerender: [{ source: 'list', urls: [a.href] }] });
+    document.body.append(script);
+    a.classList.remove('instant');
+  }
+  const prefetch = (a) => {
+    if (!a.classList.contains('instant')) return;
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = a.href;
+    document.head.append(link);
+    a.classList.remove('instant');
+  }
+  const support = HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules');
+  const handle = support ? prerender : prefetch;
+  document.querySelectorAll('a.instant').forEach(a => {
+    if (a.href.endsWith(window.location.pathname)) return;
+    let timer;
+    a.addEventListener('mouseenter', () => {
+      timer = setTimeout(() => handle(a), 50);
+    });
+    a.addEventListener('mouseleave', () => clearTimeout(timer));
+    a.addEventListener('touchstart', () => handle(a), { passive: true });
+  });
+}
+
+/**
+ * Functionality to fold and unfold navigation items when the toggler is clicked.
+ *
+ * @return {void}
+ */
 function enableNavFold() {
   const nav = document.querySelector('header nav');
   if (!nav) return;
@@ -155,6 +219,47 @@ function enableNavFold() {
   });  
 }
 
+/**
+ * Functionality to enable RSS 'mask' by setting up event listeners for the RSS button and mask elements,
+ * allowing the user to copy a link to the system clipboard.
+ *
+ * @return {void}
+ */
+function enableRssMask() {
+  const rssBtn = document.querySelector('#rss-btn');
+  const mask = document.querySelector('#rss-mask');
+  const copyBtn = document.querySelector('#rss-mask button');
+  if (!rssBtn || !mask) return;
+  rssBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    mask.showModal();
+  });
+  const close = (e) => {
+    if (e.target == mask) mask.close();
+  };
+  mask.addEventListener('click', close);
+  const copy = () => {
+    navigator.clipboard.writeText(copyBtn.dataset.link).then(() => {
+      copyBtn.innerHTML = copyBtn.dataset.checkIcon;
+      copyBtn.classList.add('copied');
+      copyBtn.removeEventListener('click', copy);
+      setTimeout(() => {
+        mask.close();
+        copyBtn.innerHTML = copyBtn.dataset.copyIcon;
+        copyBtn.classList.remove('copied');
+        copyBtn.addEventListener('click', copy);
+      }, 400);
+    });
+  }
+  copyBtn.addEventListener('click', copy);
+}
+
+/**
+ * Display an alert if the blog content is outdated based on a specified number of days.
+ * Number of days is defined in the config.toml file's outdate_alert_days key.
+ *
+ * @return {void} 
+ */
 function enableOutdateAlert() {
   const alert = document.querySelector('#outdate_alert');
   if (!alert) return;
@@ -170,6 +275,11 @@ function enableOutdateAlert() {
   }
 }
 
+/**
+ * Add toggle functionality to show or hide/collapse the Table of Contents (ToC) for a page.
+ *
+ * @return {void} 
+ */
 function enableTocToggle() {
   const tocToggle = document.querySelector('#toc-toggle');
   if (!tocToggle) return;
@@ -180,6 +290,11 @@ function enableTocToggle() {
   });
 }
 
+/**
+ * Add indication of the Table of Contents (TOC) based on page's scroll position.
+ *
+ * @return {void}
+ */
 function enableTocIndicate() {
   const toc = document.querySelector('aside nav');
   if (!toc) return;
@@ -199,6 +314,32 @@ function enableTocIndicate() {
   headers.forEach(header => observer.observe(header));
 }
 
+/**
+ * Add a tooltip for the table of contents (ToC) links IF the ToC content overflows.
+ *
+ * @return {void}
+ */
+function enableTocTooltip() {
+  const anchors = document.querySelectorAll('aside nav a');
+  if (anchors.length == 0) return;
+  const toggleTooltip = () => {
+    anchors.forEach(anchor => {
+      if (anchor.offsetWidth < anchor.scrollWidth) {
+        anchor.setAttribute('title', anchor.textContent);
+      } else {
+        anchor.removeAttribute('title');
+      }
+    });
+  };
+  window.addEventListener('resize', toggleTooltip);
+  toggleTooltip();
+}
+
+/**
+ * Generate copy buttons for copying the contents within code blocks with custom icons.
+ *
+ * @return {void}
+ */
 function addCopyBtns() {
   const cfg = document.querySelector('#copy-cfg');
   if (!cfg) return;
@@ -231,6 +372,11 @@ function addCopyBtns() {
   });
 }
 
+/**
+ * Add a back to top button that appears when the user scrolls down the page and allows the user to smoothly scroll back to the top when clicked.
+ *  
+ * @return {void}
+ */
 function addBackToTopBtn() {
   const backBtn = document.querySelector('#back-to-top');
   if (!backBtn) return;
@@ -249,6 +395,11 @@ function addBackToTopBtn() {
   toggle();
 }
 
+/**
+ * Add backlinks to footnotes in the document.
+ *
+ * @return {void}
+ */
 function addFootnoteBacklink() {
   const backlinkIcon = document.querySelector('.prose').dataset.backlinkIcon;
   const footnotes = document.querySelectorAll('.footnote-definition');
@@ -264,12 +415,24 @@ function addFootnoteBacklink() {
   });
 }
 
+/**
+ * Enables the Lightense library for image zoom functionality. Optimization!
+ * // https://sparanoid.com/work/lightense-images/
+ *
+ * @return {void}
+ */
 function enableImgLightense() {
-  // https://sparanoid.com/work/lightense-images/
   window.addEventListener("load", () => Lightense(".prose img", { background: 'rgba(43, 43, 43, 0.19)' }));
 }
 
-// For greeting message in footer
+
+/**
+ * Generates a day greeting based on the user's preferred language and the current day of the week.
+ * Currently used in the footer of the webpage.
+ * 
+ * @return {void} 
+ * @see generateRandGreetingAdjective
+ */
 function generateDayGreeting() {
   const date = new Date();
   // toLocaleString(locales, options): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
@@ -282,37 +445,31 @@ function generateDayGreeting() {
   const greeting = document.getElementById("greeting"); 
   const fmtGreeting = `Hope you are having ${generateRandGreetingAdjective()} <b>${localDay}</b>!`;
   if (greeting) {
-    // Do this iff an element with id 'greeting' exists in the page
+    // Do this IFF an element with id 'greeting' exists in the page
     greeting.innerHTML = fmtGreeting;
   };
 }
 
-// For above function, throw random synonym for the adjective 'pleasant' which I think goes well with the greeting
+/**
+ * Generate a greeting adjective by picking a random value from an array of synonyms for the word 'pleasant'.
+ * Designed to be used in conjunction with the generateDayGreeting function.
+ * 
+ * @return {string} a adjective that is synonymous with 'pleasant'
+ */
 function generateRandGreetingAdjective(){
   // https://www.wordhippo.com/what-is/another-word-for/pleasant.html
   const synonyms = new Array(
     "delightful", "amiable", "fine", "gratifying", "refreshing", "lovely", "charming", "amazing", "blissful", "blessed", "splendid", "superb", "enjoyable", "great", "enchanting"
   );
   // https://stackoverflow.com/questions/5915096/get-a-random-item-from-a-javascript-array#comment85738512_5915122
-  const randadjective = synonyms[Math.floor(synonyms.length * Math.random() | 0 )];
-  // Indefinite articles nuance...
+  const randomAdjective = synonyms[Math.floor(synonyms.length * Math.random() | 0 )];
+  // Nuance for indefinite articles
   const vowelregex = /[aeiou]/; 
-  const a_or_an = vowelregex.test(randadjective[0]) ? 'an ' : 'a ';
-  const fmtres = ` ${a_or_an} ${randadjective} `;
+  const indefiniteArticle = vowelregex.test(randomAdjective[0]) ? 'an ' : 'a ';
+  const fmtres = ` ${indefiniteArticle} ${randomAdjective} `;
   return fmtres;
 }
 
-function showBuildSpecs(){
-  const specsElement = document.getElementById("build-specs");
-  const fmtSpecs = `Built with
-  <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola</a>
-  & 
-  <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene</a>
-  with tweaks.`
-  if (specsElement){
-    specsElement.innerHTML = fmtSpecs;
-  }
-}
 
 async function updateCommitInfo() {
   // Good ref I think: https://stackoverflow.com/a/51417209 + https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28
@@ -443,7 +600,9 @@ async function injectSVGIcon(iconName, elementId) {
 //--------------------------------------------
 
 enableThemeToggle();
+enablePrerender();
 enableNavFold();
+enableRssMask();
 if (document.body.classList.contains('post')) {
   enableOutdateAlert();
   enableTocToggle();
@@ -455,8 +614,7 @@ if (document.querySelector('.prose')) {
   addFootnoteBacklink();
   enableImgLightense();
 }
-
-showBuildSpecs();
+//showBuildSpecs();
 generateDayGreeting();
 updateCommitInfo();
 getPageSourceGH();
