@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% block page %}uses{% endblock page%}
+{% block lang %}{% if section.extra.lang %}{{ section.extra.lang }}{% else %}{{ section.lang }}{% endif %}{% endblock lang %}
+{% block title %}{{ section.title }}{% endblock title %}
+{% block desc %}
+  <meta name="description" content="{{ section.description }}">
+{% endblock desc %}
+
+{% block content %}
+{% include "_header.html" %}
+<div id="wrapper">
+  <main>
+    <section id="brief" class="prose">
+      {{ section.content | trim | safe }}
+    </section>
+    {% if section.extra.comment is defined %}{% set show_comment = section.extra.comment %}{% else %}{% set show_comment = config.extra.comment %}{% endif %}
+    {% if show_comment %}
+    <div class="giscus"></div>
+    {% include "_giscus_script.html" %}
+    {% endif %}
+  </main>
+  {% include "_footer.html" -%}
+</div>
+{% endblock content %}
