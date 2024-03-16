@@ -422,6 +422,7 @@ body.dark .prose {
     filter: brightness(var(--dark-mode-chart-brightness));
   }
 }
+
 /* prose pages
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -1359,37 +1360,55 @@ body.projects {
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 body.not-found {  
-  height: 100vh;
-  height: 100dvh;
   display: flex;
+  height: 100vh;
+  //height: 100dvh;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   
   .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 3em;
-  }
-  
-  .error {
-    display: flex;
-    align-items: center;
-    font-size: 2em;
-    gap: 1em;
-    color: var(--text-pale-color);
-  }
 
-  .spacer {
-    background: var(--text-pale-color);
-    width: 2px;
-    height: 0.75em;
-    margin: 0 0.5em;
-  }
+    .code{
+      display: flex;
+      align-items: center;
+      font-size: 5em;
 
-  .text {
-    font-size: 0.85em;
+      a:hover {
+        //color: var(--primary-pale-color);
+        opacity: 0.5;
+      }
+    }
+
+    img{
+      max-width: 59%; 
+      height: auto;
+    }
+
+    @media screen and (min-width: 425px) {
+      img {
+        max-width: 85%;
+        height: auto;
+      }
+    }
+
+    .error-text {
+      font-size: 1.5em;
+      gap: 1em;
+      color: var(--text-pale-color);
+    }
+
+    .back-home{
+      font-size: 1.1em;
+      font-style: italic;
+    }
   }
+      
 
   a {
     color: var(--primary-color);
