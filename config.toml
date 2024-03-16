@@ -70,7 +70,8 @@ sections = [
     # { name = "blog", path = "/blog", is_external = false },
     { name = "projects", path = "/projects", is_external = false },
     { name = "now", path = "/now", is_external = false },
-    { name = "colophon", path = "/colophon", is_external = false }
+    { name = "colophon", path = "/colophon", is_external = false },
+    { name = "uses", path = "/uses", is_external = false }
 ]
 
 # Nav bar tweaking
@@ -96,8 +97,9 @@ outdate_alert_text_before = "This article was last updated "
 outdate_alert_text_after = " days ago and may be out of date."
 
 # From downtown
-not_found_title = "404"
-not_found_error_text = "Uh-oh! Looks like this page is out for lunch."
+not_found_title = "404 - File (or directory) Not Found"
+not_found_text = "404"
+not_found_error_text = "Looks like you requested a page that was not found on this server."
 not_found_recover_text = "« Let's get you back on track »"
 
 # Footer tweaking
