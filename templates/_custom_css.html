@@ -1,5 +1,5 @@
 <style>
-
+  
   /* light mode colors */
   body {
     --primary-color: #344563;
@@ -123,90 +123,40 @@
     padding-left: 1em;
     margin-left: 0;
     color: #666;
-}
-
-/* now page
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  body.now {
-  #wrapper {
-    margin: 0 auto;
-    max-width: var(--main-max-width);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
-
-  main {
-    width: 100%;
-    margin: 90px auto 40px;
-
-    a {
-      color: var(--primary-color);
-      text-decoration: underline var(--primary-pale-color) 2px;
+  
+  /* other pages styling
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  body.uses, body.colophon, body.now{
+    #wrapper {
+      margin: 0 auto;
+      max-width: var(--main-max-width);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    main, footer {
+      width: 100%;
+      margin: 90px auto 40px;
+      padding: 4em 0 auto;
+      
+      @media screen and (max-width: 425px) {
+        & {
+          padding: 2em 0;
+        }
+      }
+      
+      a {
+        color: var(--primary-color);
+        text-decoration: underline var(--primary-pale-color) 2px;
 
       &:hover {
         text-decoration-color: var(--primary-color);
       }
     }
   }
-
-}
-
-/* colophon page
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-body.colophon {
-  #wrapper {
-    margin: 0 auto;
-    max-width: var(--main-max-width);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
-
-  main {
-    width: 100%;
-    margin: 90px auto 40px;
-
-    a {
-      color: var(--primary-color);
-      text-decoration: underline var(--primary-pale-color) 2px;
-
-      &:hover {
-        text-decoration-color: var(--primary-color);
-      }
-    }
-  }
-
-}
-
-/* uses page
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-body.uses {
-#wrapper {
-  margin: 0 auto;
-  max-width: var(--main-max-width);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-main {
-  width: 100%;
-  margin: 90px auto 40px;
-
-  a {
-    color: var(--primary-color);
-    text-decoration: underline var(--primary-pale-color) 2px;
-
-    &:hover {
-      text-decoration-color: var(--primary-color);
-    }
-  }
-}
-
-}
 
 </style>
