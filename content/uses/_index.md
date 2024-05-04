@@ -51,8 +51,7 @@ blur_effect = true
       3. fzf
       4. eza
       5. cargo-binstall
-      6. fd
-      7. bat
+      6. fd 
     - Development specific:
       1. git
       2. gitui
