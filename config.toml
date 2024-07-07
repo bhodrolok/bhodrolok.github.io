@@ -59,7 +59,7 @@ links = [
     { name = "Email", icon = "email-alt", url = "mailto:korbolorbo1214@proton.me" },
     { name = "LinkedIn", icon = "linkedin", url = "https://linkedin.com/in/ranadipc" },
 ]
-show_resume = true                    
+show_resume = false                    
 display_id = true                     
 
 homepage_layout = "about"             # "about" | "list" | "recent"
