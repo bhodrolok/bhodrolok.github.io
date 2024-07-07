@@ -13,7 +13,7 @@ compile_sass = true
 minify_html = true
 build_search_index = false          # Keep this false, search is temporarily unsupported
 
-generate_feed = true                # Whether to generate a feed file in root, read docs for more info about rss feed
+generate_feeds = true                # Whether to generate a feed file in root, read docs for more info about rss feed
 feed_filename = "feed.xml"          # File name suffix for RSS feed, "feed.xml" / "atom.xml" / "rss.xml"
 taxonomies = [{ name = "tags" }, { name = "categories" }]
 
