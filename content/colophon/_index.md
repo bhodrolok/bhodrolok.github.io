@@ -17,7 +17,7 @@ blur_effect = true
 
 - ***Hosting***: Deployed and hosted on [GitHub Pages](https://pages.github.com/) with the source code available on [GitHub](https://github.com/Bhodrolok/Bhodrolok.github.io).
 - ***First published***: May 11, 2023.
-- ***Technologies used***: Developed and built using [zola](https://github.com/getzola/zola) _[v0.18.0](https://github.com/getzola/zola/releases/tag/v0.18.0)_, which is a Rust-based static site generator, with a modified version of the [serene](https://github.com/isunjn/serene) _[v3.3.1](https://github.com/isunjn/serene/releases/tag/v3.3.1)_ theme applied.
+- ***Technologies used***: Developed and built using [zola](https://github.com/getzola/zola) _[v0.19.1](https://github.com/getzola/zola/releases/tag/v0.19.1)_, which is a Rust-based static site generator, with a modified version of the [serene](https://github.com/isunjn/serene) _[v3.3.1](https://github.com/isunjn/serene/releases/tag/v3.3.1)_ theme applied.
 - ***Typography***: Fonts used are [Karma](https://fonts.google.com/specimen/Karma) and [Work Sans](https://fonts.google.com/specimen/Work+Sans). Self-hosted.
 - ***Icons***: SVG icons used from [Remix Icon](https://remixicon.com) and [Font Awesome](https://fontawesome.com). Favicon made with [Microsoft Designer](https://designer.microsoft.com). Self-hosted.
 - ***Testing***: Conducted in the latest versions of: 
