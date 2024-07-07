@@ -51,9 +51,11 @@
         {% for section in config.extra.sections %}
         <a href="{{ section.path }}" {% if section.is_external %}target="_blank" rel='noreferrer noopener'{% else %}class="instant"{% endif %}>{{ section.name }}</a>
         {% endfor %}
+        {% if config.extra.show_resume %}
         <a href="/assets/resume-rc.pdf" id="resume" target="_blank">
           <span>resume</span>
         </a>
+        {% endif %}
       </div>
       <div id="right">
         {% for link in config.extra.links %}
