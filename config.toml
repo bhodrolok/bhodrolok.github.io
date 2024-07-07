@@ -1,7 +1,7 @@
 # Based off of: https://github.com/isunjn/serene/blob/main/example-config.toml 
 # Further reading for the SSG: https://www.getzola.org/documentation/getting-started/configuration/
 
-base_url = "https://bhodrolok.github.io" 
+base_url = "https://rana-dip.dev" 
 title = "R C's Portfolio"
 description = "Personal website"
 default_language = "en"
@@ -13,7 +13,7 @@ compile_sass = true
 minify_html = true
 build_search_index = false          # Keep this false, search is temporarily unsupported
 
-generate_feeds = true                # Whether to generate a feed file in root, read docs for more info about rss feed
+generate_feeds = false                # Whether to generate a feed file in root, read docs for more info about rss feed
 feed_filenames = ["feed.xml"]          # File name suffix for RSS feed, "feed.xml" / "atom.xml" / "rss.xml"
 taxonomies = [{ name = "tags" }, { name = "categories" }]
 
@@ -86,6 +86,7 @@ nav_wrapper_separator = ";"
 blur_effect = true                    # Default blur effect visibility
 
 # blogging & posts
+feed_in_blog_section = true
 blog_section_path = "/blog"           
 blog_categorized = true               # Whether to categorize blog posts
 back_to_top = true                    # Whether to show back-to-top button on post pages
