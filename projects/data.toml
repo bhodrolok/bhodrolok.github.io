@@ -1,0 +1,77 @@
+[[project]]
+name = "JobAppTrackr"
+desc = "Web app for efficiently tracking and managing job applications"
+tags = ["ASP.NET", "C#", "React", "MongoDB"]
+links = [
+        {name = "GitHub", url = "https://github.com/Bhodrolok/JobAppTrackr"}
+]
+#img = "https://placehold.co/600x400"
+
+[[project]]
+name = "rupantar"
+desc = "Simple hackable static site generator with a focus on minimalism"
+tags = ["Python", "Jinja", "Markdown", "Unit Testing"]
+links = [
+        {name = "GitHub", url = "https://github.com/Bhodrolok/rupantar"}
+]
+
+[[project]]
+name = "AdShare"
+desc = "Distributed Peer-to-Peer (P2P) advertisment platform"
+tags = ["JavaScript", "React", "Docker", "Unit Testing"]
+links = [
+        # TODO: Add demo website link
+        {name = "GitHub", url = "https://github.com/bhodrolok/as"}
+]
+
+[[project]]
+name = "MERN E-Library"
+desc = "Web based simple library management system"
+tags = ["MongoDB", "ExpressJS", "ReactJS", "NodeJS", "Docker"]
+links = [
+        {name = "Demo", url = "https://mern-library-nu.vercel.app/"},
+        {name = "GitHub", url = "http://github.com/bhodrolok/mernlibrary"}
+]
+
+[[project]]
+name = "PassCompare"
+desc = "Password policy comparison of popular websites using Dropbox's zxcvbn algorithm"
+tags = ["Python", "NumPy", "Pandas", "Matplotlib"]
+links = [
+        {name = "GitHub", url = "https://github.com/Bhodrolok/PassCompare"},
+        {name = "zxcvbn", url = "https://github.com/dropbox/zxcvbn"}
+]
+
+[[project]]
+name = "TerrorDetect"
+desc = "Identifying potential criminals and terrorists from social media analysis."
+tags = ["Python","NLTK","ML Classification", "Twitter Sentiment Analysis"]
+links = [
+        {name = "GitHub", url = "https://github.com/Bhodrolok/TerrorDetect"}
+]
+
+[[project]]
+name = "Community4All"
+desc = "Mobile friendly web app that acts as an online community posting board for services offered by residents"
+tags = ["Python","Django","SQLite"]
+links = [
+        # TODO: Add demo website link
+        {name = "GitHub", url = "https://github.com/Bhodrolok/Community4All"},
+        {name = "GitHub", url = "https://github.com/DoughraT/Community"}
+]
+
+[[project]]
+name = "PyWeather"
+desc = "CLI application to check the weather details of a city."
+tags = ["Python","GeoPy","pyfiglet", "OpenWeatherMap", "API"]
+links = [
+        {name = "GitHub", url = "https://github.com/Bhodrolok/pyweather"}
+]
+
+[[project]]
+name = "Papera"
+desc = "Academic Paper Submission System"
+tags = ["JavaScript","PHP","MySQL"]
+links = [
+        {name = "GitHub", url = "https://github.com/Bhodrolok/Papera"}
+]
