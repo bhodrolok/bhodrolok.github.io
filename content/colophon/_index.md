@@ -1,7 +1,8 @@
 +++
 title = "/colophon"
 description = "Metainformation about this website"
-template = "colophon.html"
+template = "prose.html"
+insert_anchor_links = "none"
 
 [extra]
 lang = 'en'
@@ -13,13 +14,16 @@ comment = true
 blur_effect = true
 +++
 
+
 ## About this site
 
 - ***Hosting***: Deployed and hosted on [GitHub Pages](https://pages.github.com/) with the source code available on [GitHub](https://github.com/Bhodrolok/Bhodrolok.github.io).
 - ***First published***: May 11, 2023.
-- ***Technologies used***: Developed and built using [zola](https://github.com/getzola/zola) _[v0.19.1](https://github.com/getzola/zola/releases/tag/v0.19.1)_, which is a Rust-based static site generator, with a modified version of the [serene](https://github.com/isunjn/serene) _[v3.3.1](https://github.com/isunjn/serene/releases/tag/v3.3.1)_ theme applied.
-- ***Typography***: Fonts used are [Karma](https://fonts.google.com/specimen/Karma) and [Work Sans](https://fonts.google.com/specimen/Work+Sans). Self-hosted.
-- ***Icons***: SVG icons used from [Remix Icon](https://remixicon.com) and [Font Awesome](https://fontawesome.com). Favicon made with [Microsoft Designer](https://designer.microsoft.com). Self-hosted.
+- ***Technologies used***: Developed and built using [zola](https://github.com/getzola/zola) (_[v0.22.1](https://github.com/getzola/zola/releases/tag/v0.22.1)_), which is a Rust-based static site generator, with a modified version of the [serene](https://github.com/isunjn/serene) (_[v5.7.0](https://github.com/isunjn/serene/releases/tag/v5.7.0)_) theme applied.
+- ***Typography***: Fonts used are [Karma](https://fonts.google.com/specimen/Karma) and [Work Sans](https://fonts.google.com/specimen/Work+Sans).
+    - These are [self-hosted](https://github.com/bhodrolok/bhodrolok.github.io/tree/main/static/fonts).
+- ***Icons***: SVG icons sourced from [Remix Icon](https://remixicon.com) and [Font Awesome](https://fontawesome.com). Favicon made with [Microsoft Designer](https://designer.microsoft.com).
+    - These are [self-hosted](https://github.com/bhodrolok/bhodrolok.github.io/tree/main/static/icons) as well.
 - ***Testing***: Conducted in the latest versions of: 
     - Google Chrome
     - Microsoft Edge
@@ -27,8 +31,12 @@ blur_effect = true
     - Safari
     - [Floorp](https://github.com/Floorp-Projects/Floorp). 
 - ***Commenting system***: Enabled by [giscus](https://giscus.app) which uses [GitHub Discussions](https://github.com/features/discussions).
-- _Any_ questions or concerns about this website, or its operation, can be submitted as a comment in this page or as an individual [GitHub issue](https://github.com/Bhodrolok/Bhodrolok.github.io/issues). 
+    - Will eventually migrate to remark42 or something similar...
+- _Any_ questions or concerns about this website, or its operation, can be submitted by:
+    - reaching out to me 
+    - creating a [GitHub issue](https://github.com/Bhodrolok/Bhodrolok.github.io/issues) for this repo
   
 ---
 > A colophon is a page or section, like a footer, of a site that describes how the site is made, with what tools, supporting what technologies. -- [IndieWeb](https://indieweb.org/colophon)
-- Adapted to the digital age from it's [historical usage](https://en.wikipedia.org/wiki/Colophon_(publishing)) in publishing.
+
+This page is a digital adaptation of a colophon from it's [historical usage](https://en.wikipedia.org/wiki/Colophon_(publishing)) in publishing.
