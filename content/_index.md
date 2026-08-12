@@ -14,7 +14,7 @@ bio = "Always Learning, Always Seeking"
 avatar = "img/avatar.webp" 
 links = [
     { name = "GitHub", icon = "github", url = "https://github.com/bhodrolok" },
-    { name = "Email", icon = "email", url = "mailto:ranadip.cj@gmail.com" },
+    { name = "Email", icon = "email", url = "mailto:ranadipcj@proton.me" },
     { name = "Linkedin", icon = "linkedin", url = "https://linkedin.com/in/ranadipc" },    
     # { name = "Twitter", icon = "twitter", url = "https://twitter.com/<your-username>" },
     # { name = "Mastodon", icon = "mastodon", url = "https://mastodon.social/<your-username>", rel_me = true },
