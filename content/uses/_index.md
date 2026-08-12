@@ -1,10 +1,11 @@
 +++
 title = "/uses"
 description = "Daily drivers"
-template = "uses.html"
+template = "prose.html"
 insert_anchor_links = "right"
 
 [extra]
+
 lang = 'en'
 math = false
 mermaid = false
@@ -15,35 +16,32 @@ blur_effect = true
 
 ## What I use on a daily basis
 
-> Not an exhaustive list!
-
 ### Hardware
 
 - Machine: HP EliteBook 840 G2
-  - OS: Windows 10 Pro (build 19045)
+  - OS: Arch Linux
   - GPU: Intel HD Graphics 5500 (integrated)
   - CPU: Intel Core i5-5200U 2.20 GHz
   - RAM: 16 GB (2x Samsung Memory 8 GB DDR3 1600 Mhz DIMM sticks)
+    - glad I got these [before the shortages](https://en.wikipedia.org/wiki/2025%E2%80%93present_global_memory_supply_shortage)
   - Storage: 256 GB LITEON SATA3.1 SSD 
   
 - Peripherals:
-  - External Display: Acer 23.8" FHD 75Hz 1ms GTG VA LED Monitor (KA242Y ABI) - Black
   - Keyboard: Perixx PERIBOARD-409WU US, Wired USB Mini Keyboard - White
   - Mouse: Dell Optical Wired Mouse - MS116
 
 ### Software
   - Notes & Personal Knowledge Management:
     1. Obsidian
-    2. Zim  
-  - Terminal Emulator: Windows Terminal (Preview 1.20.10572.0)
-    - Shell: PowerShell 7
+        - TODO: Add link to quartz
+  - Terminal Emulator: kitty
+    - Shell: zsh
   	- Font: Adobe Source Code Pro
-  	- Theme: Popping and Locking
   - Text Editor(s):
-    1. Sublime Text 4
-    2. Visual Studio Code
-    3. Helix
-    4. Micro 
+    1. Visual Studio Code
+    2. Sublime Text
+    3. [Helix](https://helix-editor.com/)
+    4. [Neovim](https://neovim.io/)
   - CLI Tools:
     - General:
       1. zoxide
@@ -57,12 +55,15 @@ blur_effect = true
       2. gitui
       3. curl
       4. riff 
-      5. python stack: 
+      5. For python currently it's the amazing uv but prior to that I dabbled with:
          1. pyenv-win
          2. poetry
          3. venv
          4. pipx
-  - API Testing: Postman 
+  - API Testing: 
+    1. Postman
+    2. Hoppscotch
+    3. cURL - classic... 
   - Miscellaneous:
     1. Everything 1.5a
 
