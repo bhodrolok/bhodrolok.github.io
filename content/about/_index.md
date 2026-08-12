@@ -7,8 +7,7 @@ insert_anchor_links = "none"
 [extra]
 lang = 'en'
 
-title = "Posts"
-subtitle = "I write about ...."
+title = "$whoami"
 
 math = false
 mermaid = false
@@ -25,8 +24,14 @@ Outside of that, I am a big fan of sports. I love football (or soccer as it's ca
 1. Borussia Dortmund and Mohun Bagan
 2. Kolkata Knight Riders and the Indian national cricket team
 
-Neutral on NBA teams, tend to be biased in rooting for underdogs.
+Neutral on NBA teams, tend to be biased in rooting for the underdog.
 
 I enjoy being physically active and I find that sports serves as an excellent medium. Helps that it's also a great complement to the gym.
 
 Oh and I also love taking photos of urban life and nature. One of these days I will display them on this website (:surely:).
+
+I'm always open to conversations around QA, AI, building & shipping stuff, football, cricket, food, pretty much anything under the sun. 
+
+I can be contacted by:
+1. Email - `ranadipcj at proton.me`
+2. [LinkedIn](https://linkedin.com/in/ranadipc) 
