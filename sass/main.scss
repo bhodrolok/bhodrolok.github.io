@@ -1257,6 +1257,41 @@ footer {
   gap: 0 0.5em;
   color: var(--text-pale-color);
 
+  hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 0.5em 0;
+  }
+  
+  .bottom-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .bottom-left,
+    .bottom-center,
+    .bottom-right {
+      width: 33.33%;
+    }
+
+    .bottom-left {
+      text-align: left;
+    }
+
+    .bottom-center {
+      text-align: center;
+    }
+
+    .bottom-right {
+      text-align: right;
+    }
+  }
+
+  a {
+    color: var(--text-pale-color);
+  }
+
   .left {
     margin: 15px 0;
     margin-right: auto;
