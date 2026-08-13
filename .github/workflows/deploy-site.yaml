@@ -20,10 +20,10 @@ jobs:
     if: github.ref != 'refs/heads/main'
     steps:
       - name: Checkout main code so workflow can be accessed
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v7.0.1
 
       - name: build and deploy zola site to the main branch as GitHub Pages
-        uses: shalzz/zola-deploy-action@master
+        uses: shalzz/zola-deploy-action@v0.22.1
         env:
           # https://github.com/shalzz/zola-deploy-action#environment-variables
           BUILD_DIR: public
@@ -39,11 +39,11 @@ jobs:
 
     steps:
       - name: Checkout main code so workflow can be accessed
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v7.0.1
 
       - name: build and deploy zola site to the main branch as GitHub Pages
-        uses: shalzz/zola-deploy-action@master
+        uses: shalzz/zola-deploy-action@v0.22.1
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAGES_ZOLA_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OUT_DIR: public
           PAGES_BRANCH: gh-pages

@@ -1,0 +1,90 @@
+# serene v5.7.0
+#
+# - docs: https://github.com/isunjn/serene/blob/latest/USAGE.md
+# - check for updates: https://github.com/isunjn/serene/releases
+#
+#=========================================================================================
+
+base_url = "https://rana-dip.dev"
+title = "R C's portfolio"
+description = "Yet another portfolio website."
+default_language = "en"
+theme = "serene"
+output_dir = "public"
+compile_sass = true
+minify_html = false # Keep this false, as it may cause issues with some styles
+build_search_index = false # Keep this false, search is temporarily unsupported
+generate_feeds = false # Whether to generate a feed file in root, read docs for more info about rss feed
+feed_filenames = ["feed.xml"] # "feed.xml" | "atom.xml" | "rss.xml", read docs for more info
+taxonomies = [{ name = "tags" }, { name = "categories" }]
+
+[markdown]
+render_emoji = false
+external_links_target_blank = false
+external_links_no_follow = true
+external_links_no_referrer = true
+smart_punctuation = false
+github_alerts = true
+
+[markdown.highlighting]
+style = "class"
+light_theme = "github-light"
+dark_theme = "github-dark"
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+
+#=========================================================================================
+
+[extra]
+
+sections = [
+  { name = "posts", path = "/posts", is_external = false },
+  { name = "about", path = "/about", is_external = false },
+  { name = "uses", path = "/uses", is_external = false },
+  { name = "colophon", path = "/colophon", is_external = false },
+  { name = "now", path = "/now", is_external = false }
+  # { name = "tags", path = "/tags", is_external = false },
+  # { name = "github", path = "https://github.com/<your-username>", is_external = true },
+]
+blog_section_path = "/posts"
+
+back_link_text = "Back" # Text of the back button
+force_theme = false # false | "light" | "dark"
+
+# og_image = "img/og.png" # The default image for social media sharing (Open Graph), a path in static folder or a full URL
+
+# From downtown
+not_found_title = "404 - File (or directory) Not Found"
+not_found_text = "404"
+not_found_error_text = "Looks like you requested a page that was not found on this server."
+not_found_recover_text = "« Let's get you back on track »"
+
+# Footer tweaking
+show_footer_tool_credits = true                # Whether to show 'build tool' credits
+show_footer_cc_license = true                   # Whether to show CC/Creative Commons license 
+footer_copyright_license = "CC BY-SA 4.0"
+show_footer_signature = true                    # Whether to show the footer signature
+footer_signature = "</> with ❤️ 🥞 🍛 ☕"
+
+# Footer 2nd layer
+show_sub_footer = true
+show_git_commit_info = true                     # Whether to show git commit info per latest website deployment (currently showslast commit short SHA-1 hash, date)
+show_page_source = true                         # Whether to show webpage source code link (currently hosted remotely on GitHub) 
+show_user_greeting = true                       # Whether to show user greeting
+
+footer_copyright = "© 2026 Ranadip Chatterjee"
+footer_credits = true # Whether to show "Built with zola and serene" in footer
+
+reaction = false # Whether to enable anonymous emoji reactions (Note: You need to set up a working api endpoint to enable this feature)
+reaction_align = "right" # "left" | "center" | "right"
+reaction_endpoint = "https://example.com/api/reaction"
+
+# Nav bar tweaking
+nav_separator = ">>"
+nav_wrapper_left = "["
+nav_wrapper_right = "]"
+nav_wrapper_separator = ";"
+blur_effect = true                    # Default blur effect visibility

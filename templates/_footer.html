@@ -1,38 +1,74 @@
+{% if config.extra.blog_section_path is defined %}
+{% set blog_section_path = config.extra.blog_section_path %}
+{% endif %}
 <footer>
-    <div class="top-section">
-      {% if config.extra.show_footer_signature %}
-      <div class="copyright">
-        {{ config.extra.footer_signature | trim | markdown | safe }}
-      </div>
-      {% endif %}
-      
-      {% if config.extra.show_footer_cc_license %}
-      <div class="credits">
-        <span id="credits-license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> {{ config.extra.footer_copyright_license | trim | markdown | safe }} </a></span>
-      </div>
+  <div class="left">
+    <div class="copyright">
+      {{ config.extra.footer_copyright }}
+      {% if config.extra.footer_credits %}
+      <span>|</span>
+      Built with ❤️ 🥞 🍛 ☕
       {% endif %}
     </div>
+  </div>
 
-    <!--Another one!-->
+  <div class="right">
+    {% if blog_section_path is defined and section.path is starting_with(blog_section_path) %}
+    {% if section.generate_feeds %}
+      {% set_global rss_path = blog_section_path ~ "/" ~ config.feed_filenames.0 %}
+    {% elif config.generate_feeds %}
+      {% set_global rss_path = "/" ~ config.feed_filenames.0 %}
+    {% endif %}
+    {% if section.generate_feeds or config.generate_feeds %}
+    <a id="rss-btn" href="{{ get_url(path=rss_path) }}">RSS</a>
+    {% endif %}
+    {% endif %}
+
+    {% if not config.extra.force_theme %}
+    {% set moon_icon = load_data(path="icon/moon.svg") %}
+    {% set sun_icon = load_data(path="icon/sun.svg") %}
+    <button id="theme-toggle" aria-label="theme switch">
+      <span class="moon-icon">{{ moon_icon | safe }}</span>
+      <span class="sun-icon">{{ sun_icon | safe }}</span>
+    </button>
+    {% endif %}
+  </div>
+
     {% if config.extra.show_sub_footer %}
     <hr />
     <div class="bottom-section">
       {% if config.extra.show_git_commit_info %}
-      <div class="git-commit-info">
+      <div class="bottom-left">
         <span id="git-commit-info"></span>
       </div>
       {% endif %}
 
       {% if config.extra.show_page_source %}
-      <div class="page-source">
+      <div class="bottom-center">
         <span id="page-source-gh"></span>
       </div>
       {% endif %}
       {% if config.extra.show_user_greeting %}
-      <div class="greeting">
+      <div class="bottom-right">
         <span id="greeting"></span>
       </div>
       {% endif %}
     </div>
     {% endif %}
 </footer>
+
+{% if blog_section_path is defined and section.path is starting_with(blog_section_path) %}
+{% if section.generate_feeds or config.generate_feeds %}
+{% set link = get_url(path=rss_path) %}
+<dialog id="rss-mask">
+  <div>
+    <a href="{{ link }}">{{ link }}</a>
+    {% set copy_icon = load_data(path="icon/copy.svg") %}
+    {% set check_icon = load_data(path="icon/check.svg") %}
+    <button autofocus aria-label="copy" data-link="{{ link }}" data-copy-icon="{{ copy_icon }}" data-check-icon="{{ check_icon }}" >
+      {{ copy_icon | safe }}
+    </button>
+  </div>
+</dialog>
+{% endif %}
+{% endif %}

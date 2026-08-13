@@ -1,177 +1,31 @@
-/**
- * Enable theme toggle functionality on the webpage.
- * Available themes currently in order of toggling: dark, cyberpunk, cyberspace, coffee, light.
- * 
- * @return {void} 
- */
 function enableThemeToggle() {
   const themeToggle = document.querySelector('#theme-toggle');
+  if (!themeToggle) return;
   const hlLink = document.querySelector('link#hl');
   const preferDark = window.matchMedia("(prefers-color-scheme: dark)");
-  const preferLight = window.matchMedia( "(prefers-color-scheme: light)" );
-  
-  /**
-   * Change webpage theme to given theme.
-   * Order of toggling: dark to cyberpunk, cyberpunk to cyberspace, cyberspace to coffee, coffee to light, light to dark.
-   * 
-   * @param {string} theme - The theme to toggle to
-   * @return {void} 
-   */
   function toggleTheme(theme) {
-    switch (theme){
-      case "dark":
-        document.body.classList.add('dark'); 
-        document.body.classList.remove('coffee', 'light', 'cyberpunk', 'cyberspace');
-        themeToggle.innerHTML = themeToggle.dataset.robotIcon;
-        break;
-      case "cyberpunk":
-        document.body.classList.add('cyberpunk');
-        document.body.classList.remove('dark', 'light', 'coffee', 'cyberspace');
-        themeToggle.innerHTML = themeToggle.dataset.cupIcon;
-        break;
-      case "cyberspace":
-        document.body.classList.add('cyberspace');
-        document.body.classList.remove('dark', 'light', 'coffee', 'cyberpunk');
-        themeToggle.innerHTML = themeToggle.dataset.sunIcon;
-        break;
-      case "coffee":
-        document.body.classList.add('coffee');
-        document.body.classList.remove('dark', 'light', 'cyberpunk', 'cyberspace');
-        themeToggle.innerHTML = themeToggle.dataset.bikeIcon;
-        break;
-      case "light":
-        document.body.classList.add('light');
-        document.body.classList.remove('dark', 'coffee', 'cyberpunk', 'cyberspace');
-        themeToggle.innerHTML = themeToggle.dataset.moonIcon;
-        break;
-    };
-
-    if (hlLink) hlLink.href = `/hl-${theme}.css`;
-    
-    // Changed from localStorage in favor of short-term session-based data
+    if (theme == "dark") document.body.classList.add('dark'); else document.body.classList.remove('dark');
+    if (hlLink) hlLink.href = `/giallo-${theme}.css`;
     sessionStorage.setItem("theme", theme);
     toggleGiscusTheme(theme);
   }
-  
-  /**
-   * Change Giscus theme to given theme to match the webpage theme.
-   * Order of theme change is the same as toggleTheme.
-   *
-   * @param {string} theme - The theme to be applied/toggled to (options: "dark", "cyberpunk", "coffee", "cyberspace", "light")
-   * @return {void}
-   * @see toggleTheme 
-   */
   function toggleGiscusTheme(theme) {
-    // https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#parent-to-giscus-message-events
     const iframe = document.querySelector('iframe.giscus-frame');
-    var giscusTheme, giscusURL;
-    switch(theme){
-      case "dark":
-        giscusTheme = "dark_dimmed";
-        giscusURL = "https://giscus.app/themes";
-        break;
-      case "cyberpunk":
-        giscusTheme = "transparent_dark";
-        giscusURL = "https://giscus.app/themes";
-        break;
-      case "coffee":
-        giscusTheme = `giscus_${theme}`;
-        giscusURL = location.origin;
-        break;
-      case "cyberspace":
-        giscusTheme = "cobalt";
-        giscusURL = "https://giscus.app/themes";
-        break;
-      case "light":
-        giscusTheme = `giscus_${theme}`;
-        giscusURL = location.origin;
-        break;
-    }
-    var giscusThemeSetter = `${giscusURL}/${giscusTheme}.css`
-    // console.log(`giscusTheme: ${giscusTheme}\ngiscusURL: ${giscusURL}\ngiscusThemeSetter: ${giscusThemeSetter}`);
-    if (iframe) {
-      iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: giscusThemeSetter } } }, 'https://giscus.app');
-    }
+    if (iframe) iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: `${location.origin}/giscus_${theme}.css` } } }, 'https://giscus.app');
   }
-
-  /**
-   * Initialize the Giscus theme respecting the user preferred color theme.
-   *
-   */
-  function initGiscusTheme(evnt) {
-    if (evnt.origin !== 'https://giscus.app') return;
-    if ( !(typeof evnt.data === 'object' && evnt.data.giscus) ) return;
+  function initGiscusTheme(evt) {
+    if (evt.origin !== 'https://giscus.app') return;
+    if (!(typeof evt.data === 'object' && evt.data.giscus)) return;
     toggleGiscusTheme(sessionStorage.getItem("theme") || (preferDark.matches ? "dark" : "light"));
     window.removeEventListener('message', initGiscusTheme);
   }
-  
-  window.addEventListener('message', initGiscusTheme);  
-  themeToggle.addEventListener('click', e =>  {
-    var currentTheme = sessionStorage.getItem("theme");
-    e.preventDefault();
-    switch (currentTheme) {
-      case "light":
-        toggleTheme("dark");
-        break;
-      case "dark":
-        toggleTheme("cyberpunk");
-        break;
-      case "cyberpunk":
-        toggleTheme("coffee");
-        break;
-      case "coffee":
-        toggleTheme("cyberspace");
-        break;
-      case "cyberspace":
-        toggleTheme("light");
-        break;
-    }
-  });
-  
-  preferDark.addEventListener("change", e => { 
-    toggleTheme(e.matches ? "dark" : "cyberpunk");
-  });
-
-  preferLight.addEventListener("change", e => {
-    toggleTheme(e.matches ? "light" : "dark");
-  })
-
-  // User loading site for first time, enable their preferred color theme (light or dark)
-  if (!sessionStorage.getItem("theme")) {
-    if (preferDark.matches) { 
-      toggleTheme("dark");
-    } else if (preferLight.matches) {
-      toggleTheme("light");
-    } else {
-      // For the future ;)
-      toggleTheme("coffee");
-    }
-  }
-  // else(sessionStorage.getItem("theme"))...
-  switch (sessionStorage.getItem("theme")){
-    case "dark":
-      toggleTheme("dark");
-      break;
-    case "cyberpunk":
-      toggleTheme("cyberpunk");
-      break;
-    case "coffee":
-      toggleTheme("coffee");
-      break;
-    case "cyberspace":
-      toggleTheme("cyberspace");
-      break;
-    case "light":
-      toggleTheme("light");
-      break;
-  }
+  window.addEventListener('message', initGiscusTheme);
+  themeToggle.addEventListener('click', () => toggleTheme(sessionStorage.getItem("theme") == "dark" ? "light" : "dark"));
+  preferDark.addEventListener("change", e => toggleTheme(e.matches ? "dark" : "light"));
+  if (!sessionStorage.getItem("theme") && preferDark.matches) toggleTheme("dark");
+  if (sessionStorage.getItem("theme") == "dark") toggleTheme("dark");
 }
 
-/**
- * Enable prerendering or prefetching of certain links on mouse hover or touch for faster loading.
- *
- * @return {void} 
- */
 function enablePrerender() {
   const prerender = (a) => {
     if (!a.classList.contains('instant')) return;
@@ -202,29 +56,6 @@ function enablePrerender() {
   });
 }
 
-/**
- * Functionality to fold and unfold navigation items when the toggler is clicked.
- *
- * @return {void}
- */
-function enableNavFold() {
-  const nav = document.querySelector('header nav');
-  if (!nav) return;
-  const toggler = nav.querySelector('#toggler');
-  if (!toggler) return;
-  const foldItems = nav.querySelectorAll('.fold');
-  toggler.addEventListener('click', () => {
-    if (window.innerWidth < 768 && [...foldItems].every(item => !item.classList.contains('shown'))) return;
-    foldItems.forEach(item => item.classList.toggle('shown'));
-  });  
-}
-
-/**
- * Functionality to enable RSS 'mask' by setting up event listeners for the RSS button and mask elements,
- * allowing the user to copy a link to the system clipboard.
- *
- * @return {void}
- */
 function enableRssMask() {
   const rssBtn = document.querySelector('#rss-btn');
   const mask = document.querySelector('#rss-mask');
@@ -254,12 +85,6 @@ function enableRssMask() {
   copyBtn.addEventListener('click', copy);
 }
 
-/**
- * Display an alert if the blog content is outdated based on a specified number of days.
- * Number of days is defined in the config.toml file's outdate_alert_days key.
- *
- * @return {void} 
- */
 function enableOutdateAlert() {
   const alert = document.querySelector('#outdate_alert');
   if (!alert) return;
@@ -275,50 +100,6 @@ function enableOutdateAlert() {
   }
 }
 
-/**
- * Add toggle functionality to show or hide/collapse the Table of Contents (ToC) for a page.
- *
- * @return {void} 
- */
-function enableTocToggle() {
-  const tocToggle = document.querySelector('#toc-toggle');
-  if (!tocToggle) return;
-  const aside = document.querySelector('aside');
-  tocToggle.addEventListener('click', () => {
-    tocToggle.classList.toggle('active');
-    aside.classList.toggle('shown');
-  });
-}
-
-/**
- * Add indication of the Table of Contents (TOC) based on page's scroll position.
- *
- * @return {void}
- */
-function enableTocIndicate() {
-  const toc = document.querySelector('aside nav');
-  if (!toc) return;
-  const headers = document.querySelectorAll('h2, h3');
-  const tocMap = new Map();
-  headers.forEach(header => tocMap.set(header, toc.querySelector(`a[href="#${header.id}"]`)));
-  let actived = null;
-  const observer = new IntersectionObserver((entries) => entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const target = tocMap.get(entry.target);
-      if (target == actived) return;
-      if (actived) actived.classList.remove('active');
-      target.classList.add('active');
-      actived = target;
-    }
-  }), { rootMargin: '-9% 0px -90% 0px' });
-  headers.forEach(header => observer.observe(header));
-}
-
-/**
- * Add a tooltip for the table of contents (ToC) links IF the ToC content overflows.
- *
- * @return {void}
- */
 function enableTocTooltip() {
   const anchors = document.querySelectorAll('aside nav a');
   if (anchors.length == 0) return;
@@ -335,11 +116,6 @@ function enableTocTooltip() {
   toggleTooltip();
 }
 
-/**
- * Generate copy buttons for copying the contents within code blocks with custom icons.
- *
- * @return {void}
- */
 function addCopyBtns() {
   const cfg = document.querySelector('#copy-cfg');
   if (!cfg) return;
@@ -362,7 +138,7 @@ function addCopyBtns() {
           btn.innerHTML = copyIcon;
           btn.classList.remove('copied');
           btn.addEventListener('click', copy);
-        }, 2000);
+        }, 1500);
       });
     };
     btn.addEventListener('click', copy);
@@ -372,22 +148,19 @@ function addCopyBtns() {
   });
 }
 
-/**
- * Add a back to top button that appears when the user scrolls down the page and allows the user to smoothly scroll back to the top when clicked.
- *  
- * @return {void}
- */
 function addBackToTopBtn() {
   const backBtn = document.querySelector('#back-to-top');
   if (!backBtn) return;
-  const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const toTop = () => window.scrollTo({ top: 0 });
   const toggle = () => {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     if (scrollTop > 200 && !backBtn.classList.contains('shown')) {
       backBtn.classList.add('shown');
+      backBtn.setAttribute('tabindex', 0);
       backBtn.addEventListener('click', toTop);
     } else if (scrollTop <= 200 && backBtn.classList.contains('shown')) {
       backBtn.classList.remove('shown');
+      backBtn.setAttribute('tabindex', -1);
       backBtn.removeEventListener('click', toTop);
     }
   };
@@ -395,34 +168,90 @@ function addBackToTopBtn() {
   toggle();
 }
 
-/**
- * Add backlinks to footnotes in the document.
- *
- * @return {void}
- */
 function addFootnoteBacklink() {
-  const backlinkIcon = document.querySelector('.prose').dataset.backlinkIcon;
   const footnotes = document.querySelectorAll('.footnote-definition');
   footnotes.forEach(footnote => {
     const backlink = document.createElement('button');
     backlink.className = 'backlink';
     backlink.ariaLabel = 'backlink';
-    backlink.innerHTML = backlinkIcon;
+    backlink.innerHTML = '↩︎';
     backlink.addEventListener('click', () => window.scrollTo({
-      top: document.querySelector(`.footnote-reference a[href="#${footnote.id}"]`).getBoundingClientRect().top + window.scrollY - 50,
+      top: document.querySelector(`.footnote-reference a[href="#${footnote.id}"]`).getBoundingClientRect().top + window.scrollY,
     }));
-    footnote.appendChild(backlink);
+    const lastEl = footnote.lastElementChild || footnote;
+    lastEl.appendChild(backlink);
   });
 }
 
-/**
- * Enables the Lightense library for image zoom functionality. Optimization!
- * // https://sparanoid.com/work/lightense-images/
- *
- * @return {void}
- */
 function enableImgLightense() {
-  window.addEventListener("load", () => Lightense(".prose img", { background: 'rgba(43, 43, 43, 0.19)' }));
+  window.addEventListener("load", () => Lightense(".prose img:not(.no-lightense)", { background: 'rgba(43, 43, 43, 0.19)' }));
+}
+
+function enableReaction() {
+  const container = document.querySelector('.reaction');
+  if (!container) return;
+  const endpoint = container.dataset.endpoint;
+  const slug = location.pathname.split('/').filter(Boolean).pop();
+  let state = { error: false, reaction: {} };
+  const render = () => {
+    const btns = Object.entries(state.reaction).map(([emoji, [count, reacted]])=> {
+      const span = document.createElement('span');
+      span.textContent = count;
+      const btn = document.createElement('button');
+      if (reacted) btn.classList.add('reacted');
+      btn.append(emoji, span);
+      btn.onclick = () => toggle(emoji);
+      return btn;
+    });
+    if (state.error) {
+      container.classList.add('error');
+    } else {
+      container.classList.remove('error');
+    }
+    container.replaceChildren(...btns);
+  };
+  const toggle = async (target) => {
+    const [count, reacted] = state.reaction[target];
+    state.reaction[target] = reacted ? [count - 1, false] : [count + 1, true];
+    render();
+    try {
+      const resp = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ slug, target, reacted: !reacted }),
+      });
+      if (resp.status === 200) {
+        error = false;
+      } else {
+        throw new Error();
+      }
+    } catch (err) {
+      state.error = true;
+      state.reaction[target] = [count, reacted];
+      render();
+    }
+  };
+  const init = async () => {
+    const resp = await fetch(`${endpoint}?slug=${slug}`);
+    if (resp.status === 200) {
+      state.reaction = await resp.json();
+      render();
+    }
+  };
+  init();
+}
+
+function enableBackLink() {
+  const backLink = document.querySelector('#back-link');
+  if (!backLink) return;
+  backLink.addEventListener('click', (e) => {
+    if (document.referrer && location.href.startsWith(document.referrer) && !location.hash && history.length > 1) {
+      e.preventDefault();
+      history.back();
+    }
+  });
 }
 
 
@@ -551,71 +380,21 @@ function getPageSourceGH(){
   }
 }
 
-// NOT USED YET
-function enableAudio(){
-  // Good ref I think: https://dobrian.github.io/cmp/topics/sample-recording-and-playback-with-web-audio-api/1.loading-and-playing-sound-files.html
-  const audioElement = document.getElementById('audio-1');
-  var audioSrc = `audio/music.mp3`;
-  
-  const audio = new Audio(audioSrc);
-  const audioIconSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M15 4.58152V12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C12.3506 9 12.6872 9.06016 13 9.17071V2.04938C18.0533 2.5511 22 6.81465 22 12C22 17.5229 17.5228 22 12 22C6.47715 22 2 17.5229 2 12C2 6.81465 5.94668 2.5511 11 2.04938V4.0619C7.05369 4.55399 4 7.92038 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 8.64262 17.9318 5.76829 15 4.58152Z"></path></svg>`
-  const fmtAudio = ` ${audioIconSVG}`;
-  const eventType = [ "canplay", "canplaythrough" ];
-  
-  if (audioElement){
-    audioElement.innerHTML = fmtAudio; 
-    //audio.loop = true;
-    // audio.play();
-    audio.addEventListener(eventType[0], () => {
-      audio.play();
-    });
-  }
-}
-
-async function injectSVGIcon(iconName, elementId) {
-  // all icons located in the same directory
-  const iconPath = `/static/icons/${iconName}.svg`;
-  try{
-    const response = await fetch(iconPath);
-    // Bad response handling i.e. outside 200 to 299
-    if (!response.ok){
-      throw new Error(response.status);
-    }
-
-    const iconData = await response.text();
-    // return iconData;
-    const elementLoc = document.getElementById(elementId);
-
-    // Update the HTML element (if it exists in the HTML page)
-    if (elementLoc){
-      elementLoc.innerHTML = iconData;
-    }
-  }
-  catch (error){
-    throw error;
-  }
-}
-
-
-//--------------------------------------------
-
 enableThemeToggle();
 enablePrerender();
-enableNavFold();
 enableRssMask();
+enableBackLink();
 if (document.body.classList.contains('post')) {
   enableOutdateAlert();
-  enableTocToggle();
-  enableTocIndicate();
   addBackToTopBtn();
+  enableTocTooltip();
 }
 if (document.querySelector('.prose')) {
   addCopyBtns();
   addFootnoteBacklink();
   enableImgLightense();
+  enableReaction();
 }
-//showBuildSpecs();
 generateDayGreeting();
 updateCommitInfo();
 getPageSourceGH();
-//enableAudio();
