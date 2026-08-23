@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  
+  
+    
+  <meta name="description" content="About page of ...">
+<link rel="canonical" href="https://rana-dip.dev/about/">
+<meta property="og:site_name" content="R C&#x27;s portfolio">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About me">
+<meta property="og:description" content="About page of ...">
+<meta property="og:url" content="https://rana-dip.dev/about/">
+<meta property="og:locale" content="en">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="About me">
+<meta name="twitter:description" content="About page of ...">
+
+
+
+  <title>About me</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://rana-dip.dev/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://rana-dip.dev/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://rana-dip.dev/img/apple-touch-icon.png">
+  <style>
+/*
+src: https://gwfh.mranftl.com/fonts
+work-sans-regular - latin 
+*/
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/work-sans-v19-latin/work-sans-v19-latin-regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/work-sans-v19-latin/work-sans-v19-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/work-sans-v19-latin/work-sans-v19-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('../fonts/work-sans-v19-latin/work-sans-v19-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('../fonts/work-sans-v19-latin/work-sans-v19-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('../fonts/work-sans-v19-latin/work-sans-v19-latin-regular.svg#WorkSans') format('svg'); /* Legacy iOS */
+}
+
+/* karma-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Karma';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/karma-v16-latin/karma-v16-latin-regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/karma-v16-latin/karma-v16-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/karma-v16-latin/karma-v16-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('../fonts/karma-v16-latin/karma-v16-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('../fonts/karma-v16-latin/karma-v16-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('../fonts/karma-v16-latin/karma-v16-latin-regular.svg#Karma') format('svg'); /* Legacy iOS */
+}
+</style>
+  <style>
+  
+  /* light mode colors */
+  body {
+    --primary-color: #344563;
+    --primary-pale-color: #3445631c;
+    --text-color: #172B4D;
+    --text-pale-color: #42526E;
+    --bg-color: #FAFBFC;
+    --highlight-mark-color: #DFE1E6;
+
+    --callout-note-color: #698bcf;
+    --callout-important-color: #9971d9;
+    --callout-warning-color: #c99054;
+    --callout-alert-color: #d35757;
+    --callout-question-color: #4985a2;
+    --callout-tip-color: #3ea06f;
+  }
+
+  /* dark mode colors */
+  body.dark {
+    --primary-color: #C594C5;
+    --primary-pale-color: #C594C51c;
+    --text-color: #D8DEE9;
+    --text-pale-color: #A7ADBA;
+    --bg-color: #2F343D;
+    --highlight-mark-color: #4F5B66;
+
+
+    --callout-note-color: #698bcf;
+    --callout-important-color: #9971d9;
+    --callout-warning-color: #c99054;
+    --callout-alert-color: #d35757;
+    --callout-question-color: #4985a2;
+    --callout-tip-color: #3ea06f;
+  }
+
+  /* coffee mode colors */
+  body.coffee {
+    --primary-color: #6F4E37; 
+    --primary-pale-color: #6F4E371C; 
+    --text-color: #FFFFFF; 
+    --text-pale-color: #8B4513; 
+    --bg-color: #3B2F2F; 
+    --highlight-mark-color: #D2691E; 
+
+    --callout-note-color: #698bcf;
+    --callout-important-color: #9971d9;
+    --callout-warning-color: #c99054;
+    --callout-alert-color: #d35757;
+    --callout-question-color: #4985a2;
+    --callout-tip-color: #3ea06f;
+  }
+
+  /* cyberpunk colors */
+  body.cyberpunk {
+
+    --primary-color: #FF2C6D; 
+    --primary-pale-color: #FF2C6D1C; 
+    --text-color: #0AFFD1; 
+    --text-pale-color: #FF8200;
+    --bg-color: #140A26; 
+    --highlight-mark-color: #FF8200; 
+
+    --callout-note-color: #698bcf;
+    --callout-important-color: #9971d9;
+    --callout-warning-color: #c99054;
+    --callout-alert-color: #d35757;
+    --callout-question-color: #4985a2;
+    --callout-tip-color: #3ea06f;
+
+  }
+
+  /* cyberspace colors */
+  body.cyberspace {
+    --primary-color: #1CAC78; 
+    --primary-pale-color: #1CAC781C; 
+    --text-color: #00FFFF; 
+    --text-pale-color: #008080; 
+    --bg-color: #003333; 
+    --highlight-mark-color: #004040; 
+
+    --callout-note-color: #698bcf;
+    --callout-important-color: #9971d9;
+    --callout-warning-color: #c99054;
+    --callout-alert-color: #d35757;
+    --callout-question-color: #4985a2;
+    --callout-tip-color: #3ea06f;
+  }
+
+  /* typography */
+  body {
+    --main-font: "Karma", "Work Sans", "Jost", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --homepage-max-width: 768px;
+    --main-max-width: 768px;
+    --avatar-size: 60px;
+    --icon-size: 29px;
+    --homepage-font-size: 16px;
+    --homepage-line-height: 1.75;
+    --paragraph-font-size: 16px;
+    --paragraph-line-height: 1.75;
+    --aside-font-size: 15px;
+    --img-border-radius: 0px;
+    --callout-border-radius: 0px;
+    --detail-border-radius: 0px;
+    --dark-mode-img-brightness: 0.75;
+    --dark-mode-chart-brightness: 0.75;
+    --inline-code-border-radius: 2px;
+    --inline-code-bg-color: var(--primary-pale-color);
+    --block-code-border-radius: 0px;
+    --block-code-border-color: var(--primary-color);
+    --detail-border-color: var(--primary-color);
+  }
+
+  footer {
+    --secondary-font: "Work Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Roboto, Arial, "Noto Sans", sans-serif;
+  }
+  
+  /* markdown-like */
+  blockquote {
+    border-left: 5px solid #ccc;
+    padding-left: 1em;
+    margin-left: 0;
+    color: #666;
+  }
+  
+  /* other pages styling
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  body.about, body.uses, body.colophon, body.now{
+    #wrapper {
+      margin: 0 auto;
+      max-width: var(--main-max-width);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    main, footer {
+      width: 100%;
+      margin: 90px auto 40px;
+      padding: 4em 0 auto;
+      
+      @media screen and (max-width: 425px) {
+        & {
+          padding: 2em 0;
+        }
+      }
+      
+      a {
+        color: var(--primary-color);
+        text-decoration: underline var(--primary-pale-color) 2px;
+
+      &:hover {
+        text-decoration-color: var(--primary-color);
+      }
+    }
+  }
+  }
+
+</style>
+
+  <link rel="stylesheet" href="https://rana-dip.dev/main.css">
+  
+
+<link id="hl" rel="stylesheet" type="text/css" href="/giallo-light.css" />
+
+
+
+  
+</head>
+
+<body class="prose-page">
+  
+  <script>
+    const theme = sessionStorage.getItem('theme');
+    const match = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if ((theme && theme == 'dark') || (!theme && match)) {
+      document.body.classList.add('dark');
+      const hl = document.querySelector('link#hl');
+      if (hl) hl.href = 'https://rana-dip.dev/giallo-dark.css';
+    }
+  </script>
+  
+  
+<div id="wrapper">
+  <main>
+    
+<header>
+  <nav>
+    <a id="back-link" href="https:&#x2F;&#x2F;rana-dip.dev">← Back</a>
+  </nav>
+</header>
+
+    
+<div class="section-title">
+  
+  <h1>$whoami</h1>
+  
+  
+</div>
+
+
+    <div>
+      
+      <article class="prose">
+        <p>Hello! My name is Ranadip. I love experimenting with all things tech. Matter of fact this website that you are currently on is one of those experiments.</p>
+<p>Professionally, I have worked as a Quality Assurance Analyst at <a rel="nofollow noreferrer external" href="http://visual-eyes.ca/">Visual-Eyes Software</a> where I got the opportunity to wear quite a few hats and helped ship some cool features. I also worked as an IT Summer Student at <a rel="nofollow noreferrer external" href="https://www.stepenergyservices.com/">STEP Energy Services</a> in an intern role that helped shape my 'professional mindset' and was a great learning opportunity.</p>
+<p>Outside of that, I am a big fan of sports. I love football (or soccer as it's called in NA) and cricket, been a huge fan of both since childhood. Though since 2025 I have also been getting heavily into NBA and basketball, the clutch plays/moments in this sport are honestly peak. Club wise I have always been a fan of:</p>
+<ol>
+<li>Borussia Dortmund and Mohun Bagan</li>
+<li>Kolkata Knight Riders and the Indian national cricket team</li>
+</ol>
+<p>Neutral on NBA teams, tend to be biased in rooting for the underdog.</p>
+<p>I enjoy being physically active and I find that sports serves as an excellent medium. Helps that it's also a great complement to the gym.</p>
+<p>Oh and I also love taking photos of urban life and nature. One of these days I will display them on this website (:surely:).</p>
+<p>I'm always open to conversations around QA, AI, building &amp; shipping stuff, football, cricket, food, pretty much anything under the sun.</p>
+<p>I can be contacted by:</p>
+<ol>
+<li>Email - <code>ranadipcj at proton.me</code></li>
+<li><a rel="nofollow noreferrer external" href="https://linkedin.com/in/ranadipc">LinkedIn</a></li>
+</ol>
+
+      </article>
+
+      
+      
+
+      
+    </div>
+
+    
+
+
+<footer>
+  <div class="left">
+    <div class="copyright">
+      © 2026 Ranadip Chatterjee
+      
+      <span>|</span>
+      Built with ❤️ 🥞 🍛 ☕
+      
+    </div>
+  </div>
+
+  <div class="right">
+    
+
+    
+    
+    
+    <button id="theme-toggle" aria-label="theme switch">
+      <span class="moon-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M10 7C10 10.866 13.134 14 17 14C18.9584 14 20.729 13.1957 21.9995 11.8995C22 11.933 22 11.9665 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.0335 2 12.067 2 12.1005 2.00049C10.8043 3.27098 10 5.04157 10 7ZM4 12C4 16.4183 7.58172 20 12 20C15.0583 20 17.7158 18.2839 19.062 15.7621C18.3945 15.9187 17.7035 16 17 16C12.0294 16 8 11.9706 8 7C8 6.29648 8.08133 5.60547 8.2379 4.938C5.71611 6.28423 4 8.9417 4 12Z" fill="currentColor"></path></svg>
+</span>
+      <span class="sun-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z" fill="currentColor"></path></svg>
+</span>
+    </button>
+    
+  </div>
+
+    
+    <hr />
+    <div class="bottom-section">
+      
+      <div class="bottom-left">
+        <span id="git-commit-info"></span>
+      </div>
+      
+
+      
+      <div class="bottom-center">
+        <span id="page-source-gh"></span>
+      </div>
+      
+      
+      <div class="bottom-right">
+        <span id="greeting"></span>
+      </div>
+      
+    </div>
+    
+</footer>
+
+
+  </main>
+</div>
+
+  
+<script src="/js/lightense.min.js"></script>
+
+
+  <script src="https://rana-dip.dev/js/main.js"></script>
+</body>
+
+</html>
