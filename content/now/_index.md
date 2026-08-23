@@ -13,13 +13,13 @@ comment = true
 blur_effect = true
 +++
 
-> <span class='natural-type'> As of August 13, 2026 </span>
+> <span class='natural-type'> As of August 23, 2026 </span>
 
 Some of the things that I am occupied with **now** are:
 
 - Working on this [website](https://github.com/Bhodrolok/Bhodrolok.github.io). 
 - Learning how to effectively use AI harnesses 
-    - Certainly beats the web UI based LLM chats  
+    - Certainly beats web UI-based LLM chats which feel too 2023/2024  
     - [hermes-agent](https://github.com/nousresearch/hermes-agent) seems to be the rage these days   
 - Self-hosting some apps & services on VPS servers <span class='natural-type'>without completely breaking them.</span>
    - A whole lotta [Docker](https://xkcd.com/1988/)-ing. Works on LAN btw.
