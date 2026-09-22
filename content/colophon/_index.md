@@ -1,21 +1,16 @@
 +++
+template = "prose.html"
+
 title = "/colophon"
 description = "Metainformation about this website"
-template = "prose.html"
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 
 [extra]
 lang = 'en'
-math = false
-mermaid = false
-copy = false
-comment = true         
-# https://github.com/giscus/giscus/issues/1269 (resolved)
-blur_effect = true
+comment = true
+title = "/colophon"
+subtitle = "About this website"
 +++
-
-
-## About this site
 
 - ***Hosting***: Deployed and hosted on [GitHub Pages](https://pages.github.com/) with the source code available on [GitHub](https://github.com/Bhodrolok/Bhodrolok.github.io).
 - ***First published***: May 11, 2023.

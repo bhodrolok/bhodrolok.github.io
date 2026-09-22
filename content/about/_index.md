@@ -1,19 +1,15 @@
 +++
-title = "About me"
-description = "About page of ..."
 template = "prose.html"
+
+title = "/about"
+description = "lore"
 insert_anchor_links = "none"
 
 [extra]
 lang = 'en'
-
 title = "$whoami"
-
-math = false
-mermaid = false
-copy = false
+subtitle = "background"
 comment = false
-reaction = false
 +++
 
 Hello! My name is Ranadip. I love experimenting with all things tech. Matter of fact this website that you are currently on is one of those experiments.

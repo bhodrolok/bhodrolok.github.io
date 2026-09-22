@@ -1,20 +1,16 @@
 +++
+template = "prose.html"
+
 title = "/uses"
 description = "Daily drivers"
-template = "prose.html"
 insert_anchor_links = "right"
 
 [extra]
-
 lang = 'en'
-math = false
-mermaid = false
-copy = false
-comment = true         
-blur_effect = true
+comment = true
+title = "/uses"
+subtitle = "Stuff I use on a daily basis"
 +++
-
-## What I use on a daily basis
 
 ### Hardware
 
