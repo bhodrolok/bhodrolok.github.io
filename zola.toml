@@ -1,4 +1,4 @@
-# serene v5.7.0
+# serene v6.0.0
 #
 # - docs: https://github.com/isunjn/serene/blob/latest/USAGE.md
 # - check for updates: https://github.com/isunjn/serene/releases
@@ -40,7 +40,21 @@ anchors = "on"
 
 [extra]
 
-sections = [
+# Your info on the home page, if you don't want to display handle/bio/avatar, simply comment out that line
+name = "Ranadip Chatterjee"
+handle = "bhodrolok"
+bio = "Always Learning, Always Seeking"
+avatar = "img/avatar.webp"
+
+links = [
+  { name = "GitHub", icon = "github", url = "https://github.com/bhodrolok" },
+  { name = "Email", icon = "email", url = "mailto:ranadipcj@proton.me" },
+  { name = "LinkedIn", icon = "linkedin", url = "https://linkedin.com/in/ranadipc" },
+ #{ name = "Twitter", icon = "twitter", url = "https://twitter.com/<your-username>" },
+  #{ name = "Mastodon", icon = "mastodon", url = "https://mastodon.social/<your-username>", rel_me = true },
+]
+
+nav = [
   { name = "posts", path = "/posts", is_external = false },
   { name = "about", path = "/about", is_external = false },
   { name = "uses", path = "/uses", is_external = false },
@@ -49,6 +63,7 @@ sections = [
   # { name = "tags", path = "/tags", is_external = false },
   # { name = "github", path = "https://github.com/<your-username>", is_external = true },
 ]
+
 blog_section_path = "/posts"
 
 back_link_text = "Back" # Text of the back button
@@ -56,18 +71,8 @@ force_theme = false # false | "light" | "dark"
 
 # og_image = "img/og.png" # The default image for social media sharing (Open Graph), a path in static folder or a full URL
 
-# From downtown
-not_found_title = "404 - File (or directory) Not Found"
-not_found_text = "404"
-not_found_error_text = "Looks like you requested a page that was not found on this server."
-not_found_recover_text = "« Let's get you back on track »"
-
-# Footer tweaking
-show_footer_tool_credits = true                # Whether to show 'build tool' credits
-show_footer_cc_license = true                   # Whether to show CC/Creative Commons license 
-footer_copyright_license = "CC BY-SA 4.0"
-show_footer_signature = true                    # Whether to show the footer signature
-footer_signature = "</> with ❤️ 🥞 🍛 ☕"
+footer_copyright = "© 2026 Ranadip Chatterjee"
+footer_credits = true # Whether to show "Built with zola and serene" in footer
 
 # Footer 2nd layer
 show_sub_footer = true
@@ -75,8 +80,20 @@ show_git_commit_info = true                     # Whether to show git commit inf
 show_page_source = true                         # Whether to show webpage source code link (currently hosted remotely on GitHub) 
 show_user_greeting = true                       # Whether to show user greeting
 
-footer_copyright = "© 2026 Ranadip Chatterjee"
-footer_credits = true # Whether to show "Built with zola and serene" in footer
+not_found_error_text = "Looks like you requested a page that was not found on this server."
+not_found_recover_text = "« Let's get you back on track »"
+
+# Site-wide default values of display options, can be overridden in a section's `_index.md`, and again in a post's front-matter
+date_format = "%b %-d, %Y"
+toc = true # show table-of-contents
+code_copy = true # show copy button in code block
+comment = false # enable comment
+math = false # enable formula rendering with KaTeX
+mermaid = false # enable chart rendering with Mermaid
+outdated_alert = false # show outdate alert after certain days
+outdated_alert_days = 120
+outdated_alert_text_before = "This article was last updated "
+outdated_alert_text_after = " days ago and may be out of date."
 
 reaction = false # Whether to enable anonymous emoji reactions (Note: You need to set up a working api endpoint to enable this feature)
 reaction_align = "right" # "left" | "center" | "right"

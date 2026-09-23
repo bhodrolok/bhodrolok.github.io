@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v7.0.1
 
       - name: build and deploy zola site to the main branch as GitHub Pages
-        uses: shalzz/zola-deploy-action@v0.22.1
+        uses: shalzz/zola-deploy-action@v0.23.1
         env:
           # https://github.com/shalzz/zola-deploy-action#environment-variables
           BUILD_DIR: public
@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v7.0.1
 
       - name: build and deploy zola site to the main branch as GitHub Pages
-        uses: shalzz/zola-deploy-action@v0.22.1
+        uses: shalzz/zola-deploy-action@v0.23.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OUT_DIR: public

@@ -1,5 +1,10 @@
-{% if config.extra.blog_section_path is defined %}
-{% set blog_section_path = config.extra.blog_section_path %}
+{% set show_rss = false %}
+{% if section is defined and section.generate_feeds %}
+  {% set rss_path = section.path ~ config.feed_filenames[0] %}
+  {% set show_rss = true %}
+{% elif config.generate_feeds %}
+  {% set rss_path = "/" ~ config.feed_filenames[0] %}
+  {% set show_rss = true %}
 {% endif %}
 <footer>
   <div class="left">
@@ -7,24 +12,17 @@
       {{ config.extra.footer_copyright }}
       {% if config.extra.footer_credits %}
       <span>|</span>
-      Built with ❤️ 🥞 🍛 ☕
+      Built with ❤️ ☕
       {% endif %}
     </div>
   </div>
 
   <div class="right">
-    {% if blog_section_path is defined and section.path is starting_with(blog_section_path) %}
-    {% if section.generate_feeds %}
-      {% set_global rss_path = blog_section_path ~ "/" ~ config.feed_filenames.0 %}
-    {% elif config.generate_feeds %}
-      {% set_global rss_path = "/" ~ config.feed_filenames.0 %}
-    {% endif %}
-    {% if section.generate_feeds or config.generate_feeds %}
+    {% if show_rss %}
     <a id="rss-btn" href="{{ get_url(path=rss_path) }}">RSS</a>
     {% endif %}
-    {% endif %}
 
-    {% if not config.extra.force_theme %}
+    {% if color_scheme == "auto" %}
     {% set moon_icon = load_data(path="icon/moon.svg") %}
     {% set sun_icon = load_data(path="icon/sun.svg") %}
     <button id="theme-toggle" aria-label="theme switch">
@@ -32,7 +30,7 @@
       <span class="sun-icon">{{ sun_icon | safe }}</span>
     </button>
     {% endif %}
-  </div>
+    </div>
 
     {% if config.extra.show_sub_footer %}
     <hr />
@@ -55,10 +53,10 @@
       {% endif %}
     </div>
     {% endif %}
+  </div>
 </footer>
 
-{% if blog_section_path is defined and section.path is starting_with(blog_section_path) %}
-{% if section.generate_feeds or config.generate_feeds %}
+{% if show_rss %}
 {% set link = get_url(path=rss_path) %}
 <dialog id="rss-mask">
   <div>
@@ -70,5 +68,4 @@
     </button>
   </div>
 </dialog>
-{% endif %}
 {% endif %}
