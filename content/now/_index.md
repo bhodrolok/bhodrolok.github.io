@@ -12,12 +12,15 @@ subtitle = "life updates as of Sep 23, 2026"
 comment = true         
 +++
 
+> <span class='natural-type'> As of August 23, 2026 </span>
+
 Some of the things that I am occupied with **now** are:
 
 - Working on this [website](https://github.com/bhodrolok/bhodrolok.github.io). 
 - Learning how to effectively use AI harnesses 
-    - I still fall back to some of the good ol' web-UI-based LLM chats every now and then  
-- Self-hosting some apps & services on a VPS server <span class='natural-type'>without completely breaking them.</span>
+    - Certainly beats web UI-based LLM chats which feel too 2023/2024  
+    - [hermes-agent](https://github.com/nousresearch/hermes-agent) seems to be the rage these days   
+- Self-hosting some apps & services on VPS servers <span class='natural-type'>without completely breaking them.</span>
    - A whole lotta [Docker](https://xkcd.com/1988/)-ing. Works on LAN btw.
 - Practicing mindfulness and gratitude.
 - Catching up on my reading list and backlog of movies and TV shows. A few podcasts here and there as well.
